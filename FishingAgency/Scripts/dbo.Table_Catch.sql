@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Catch] (
+﻿GO
+CREATE TABLE [dbo].[Catch] (
     [Id]        INT        NOT NULL,
     [Amount]    FLOAT (53) NOT NULL,
     [Lenght]    FLOAT (53) NOT NULL,

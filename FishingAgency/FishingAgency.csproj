@@ -99,8 +99,10 @@
       <DependentUpon>FishingAgency.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\dbo.Table_Catch_ShipsFK.sql" />
     <Content Include="Scripts\dbo.Table_Catch.sql" />
     <Content Include="Scripts\dbo.Table_Ships.sql" />
+    <Content Include="Scripts\dbo.Table_Users_ShipsFK.sql" />
     <Content Include="Scripts\dbo.Table_Users.sql" />
   </ItemGroup>
   <ItemGroup />
