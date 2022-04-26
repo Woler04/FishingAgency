@@ -64,7 +64,9 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(273, 26);
             this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "                        Password                                                 " + "   ";  // 
+            this.textBox2.Text = "                        Password                                                 " +
+    "   ";
+            // 
             // Email
             // 
             this.Email.AutoSize = true;
@@ -94,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::FishingAgency.Properties.Resources.hubava_voda;
+            this.BackgroundImage = global::FishingAgency.Properties.Resources.po_hubava_voda;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(488, 450);
             this.Controls.Add(this.Password);
