@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FishingAgencyController.cs" />
     <Compile Include="Model\Catch.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
@@ -113,6 +114,9 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Placeholder.resx">
+      <DependentUpon>Placeholder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +133,10 @@
       <DependentUpon>FishingAgencyModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FishingAgency.Model.Catch.datasource" />
+    <None Include="Properties\DataSources\FishingAgency.Model.FishingAgencyEntities2.datasource" />
+    <None Include="Properties\DataSources\FishingAgency.Model.FishingShip.datasource" />
+    <None Include="Properties\DataSources\FishingAgency.Model.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
