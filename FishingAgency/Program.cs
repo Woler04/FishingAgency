@@ -16,7 +16,7 @@ namespace FishingAgency
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Placeholder());
+            Application.Run(new DataPreview());
         }
     }
 }
