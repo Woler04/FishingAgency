@@ -11,14 +11,15 @@ namespace FishingAgency.Controller
     {
         public List<FishingShip> GetFishingShips()
         {
-            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 return fadb.FishingShips.ToList();
             }
         }
+
         public List<User> GetFishermans()
         {
-            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 return fadb.Users.ToList();
             }
