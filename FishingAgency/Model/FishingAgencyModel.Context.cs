@@ -13,10 +13,10 @@ namespace FishingAgency.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FishingAgencyEntities2 : DbContext
+    public partial class FishingAgencyEntities : DbContext
     {
-        public FishingAgencyEntities2()
-            : base("name=FishingAgencyEntities2")
+        public FishingAgencyEntities()
+            : base("name=FishingAgencyEntities")
         {
         }
     

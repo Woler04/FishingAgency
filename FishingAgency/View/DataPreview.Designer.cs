@@ -1,7 +1,7 @@
 ﻿
 namespace FishingAgency
 {
-    partial class Placeholder
+    partial class DataPreview
     {
         /// <summary>
         /// Required designer variable.

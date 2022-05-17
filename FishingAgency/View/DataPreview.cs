@@ -11,15 +11,16 @@ using FishingAgency.Controller;
 
 namespace FishingAgency
 {
-    public partial class Placeholder : Form
+    public partial class DataPreview : Form
     {
         private FishingAgencyController controller;
 
-        public Placeholder()
+        public DataPreview()
         {
             InitializeComponent();
             controller = new FishingAgencyController();
         }
+
         private void Placeholder_Load(object sender, EventArgs e)
         {
             //dgvFishingAgency.DataSource = controller.GetFishingShips();
@@ -30,7 +31,6 @@ namespace FishingAgency
             dgvFishingAgency.DataSource = controller.GetFishingShips();
             dgvFishingAgency.Columns.Remove("Catches");
             dgvFishingAgency.Columns.Remove("Users");
-
         }
 
         private void btnShowFishermans_Click(object sender, EventArgs e)

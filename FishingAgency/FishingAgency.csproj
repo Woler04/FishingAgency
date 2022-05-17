@@ -95,11 +95,11 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Placeholder.cs">
+    <Compile Include="View\DataPreview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Placeholder.Designer.cs">
-      <DependentUpon>Placeholder.cs</DependentUpon>
+    <Compile Include="View\DataPreview.Designer.cs">
+      <DependentUpon>DataPreview.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +114,8 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Placeholder.resx">
-      <DependentUpon>Placeholder.cs</DependentUpon>
+    <EmbeddedResource Include="View\DataPreview.resx">
+      <DependentUpon>DataPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
