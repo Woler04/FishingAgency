@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FishingAgency.View;
 
 namespace FishingAgency
 {
@@ -16,7 +17,7 @@ namespace FishingAgency
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DataPreview());
+            Application.Run(new LoginView());
         }
     }
 }
