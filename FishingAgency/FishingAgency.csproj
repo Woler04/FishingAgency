@@ -134,7 +134,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FishingAgency.Model.Catch.datasource" />
-    <None Include="Properties\DataSources\FishingAgency.Model.FishingAgencyEntities2.datasource" />
     <None Include="Properties\DataSources\FishingAgency.Model.FishingShip.datasource" />
     <None Include="Properties\DataSources\FishingAgency.Model.User.datasource" />
     <None Include="Properties\Settings.settings">
