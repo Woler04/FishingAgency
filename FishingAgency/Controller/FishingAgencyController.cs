@@ -30,7 +30,15 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                MessageBox.Show($"{username} with {password}");
+                var user = fadb.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
+                if (user != null)
+                {
+                    MessageBox.Show($"Welcome {username}");
+                }
+                else
+                {
+                    MessageBox.Show($"Wrong username or password");
+                }
             }
         }
     }
