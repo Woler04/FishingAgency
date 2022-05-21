@@ -28,10 +28,34 @@ namespace FishingAgency.Controller
 
         public void Login(string username, string password)
         {
+            //add more validations
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 MessageBox.Show($"{username} with {password}");
             }
+        }
+
+        public void Register(string fullName, string username, string password, string shipName)
+        {
+            //add more validations
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                User user = new User()
+                {
+                    Name = fullName,
+                    Username = username,
+                    Password = password,
+                    ShipId = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault().Id
+                };
+            }
+        }
+
+        public void SwitchingForms(Form from, Form to)
+        {
+            to.Location = from.Location;
+            to.StartPosition = FormStartPosition.Manual;
+            to.Show();
+            from.Hide();
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginView));
             this.lblLoginTitle = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -128,6 +127,7 @@
             this.lblForgottenPassword.TabIndex = 7;
             this.lblForgottenPassword.Text = "Forgot password?";
             this.lblForgottenPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblForgottenPassword.Click += new System.EventHandler(this.lblForgottenPassword_Click);
             // 
             // LoginView
             // 
@@ -143,7 +143,6 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblLoginTitle);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

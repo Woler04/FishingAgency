@@ -27,5 +27,10 @@ namespace FishingAgency.View
             string password = txtPassword.Text;
             controller.Login(username, password);
         }
+
+        private void lblForgottenPassword_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please try to remeber it!", "You forgor?", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }
