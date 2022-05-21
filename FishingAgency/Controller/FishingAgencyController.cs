@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FishingAgency.Model;
 
 namespace FishingAgency.Controller
@@ -22,6 +23,14 @@ namespace FishingAgency.Controller
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 return fadb.Users.ToList();
+            }
+        }
+
+        public void Login(string username, string password)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                MessageBox.Show($"{username} with {password}");
             }
         }
     }

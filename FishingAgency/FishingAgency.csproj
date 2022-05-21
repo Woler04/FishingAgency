@@ -114,6 +114,12 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\DataPreview.resx">
       <DependentUpon>DataPreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\FishingAgencyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -169,6 +178,9 @@
       <DependentUpon>FishingAgencyModel.edmx</DependentUpon>
       <LastGenOutput>FishingAgencyModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\loginorregister.jpg" />
+    <None Include="Resources\ocean.jpg" />
+    <None Include="Resources\underwater.jpg" />
     <Content Include="Scripts\dbo.Table_Catch_ShipsFK.sql" />
     <Content Include="Scripts\dbo.Table_Catch.sql" />
     <Content Include="Scripts\dbo.Table_Ships.sql" />
