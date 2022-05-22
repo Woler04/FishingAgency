@@ -25,7 +25,10 @@ namespace FishingAgency.View
             //MessageBox.Show($"test");
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            controller.Login(username, password);
+            if (controller.Login(username, password))
+            {
+                controller.SwitchingForms(this, new MainView());
+            }
         }
 
         private void lblForgottenPassword_Click(object sender, EventArgs e)

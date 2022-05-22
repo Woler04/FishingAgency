@@ -26,12 +26,23 @@ namespace FishingAgency.Controller
             }
         }
 
-        public void Login(string username, string password)
+        public bool Login(string username, string password)
         {
             //add more validations
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                MessageBox.Show($"{username} with {password}");
+                //success
+                if (true)
+                {
+                    MessageBox.Show($"{username} with {password}");
+                    return true;
+                }
+                //login fail
+                else
+                {
+                    MessageBox.Show($"There is not such user");
+                    return false;
+                }
             }
         }
 
