@@ -14,6 +14,7 @@ namespace FishingAgency.View
     public partial class LoginView : Form
     {
         FishingAgencyController controller;
+
         public LoginView()
         {
             InitializeComponent();
@@ -28,6 +29,14 @@ namespace FishingAgency.View
             if (controller.Login(username, password))
             {
                 controller.SwitchingForms(this, new MainView());
+            }
+            else
+            {
+                var res = MessageBox.Show($"There is not such user. Want to create an account?", "No Account?", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    controller.SwitchingForms(this, new RegisterView());
+                }
             }
         }
 

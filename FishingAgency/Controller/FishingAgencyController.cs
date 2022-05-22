@@ -10,6 +10,13 @@ namespace FishingAgency.Controller
 {
     internal class FishingAgencyController
     {
+        static private User logedUser;
+
+        public string GetUsername()
+        {
+            return logedUser.Name;
+        }
+
         public List<FishingShip> GetFishingShips()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
@@ -32,15 +39,15 @@ namespace FishingAgency.Controller
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 //success
-                if (true)
-                {
+                try { 
+                    User userTolog = fadb.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
                     MessageBox.Show($"{username} with {password}");
+                    logedUser = userTolog;
                     return true;
                 }
                 //login fail
-                else
+                catch
                 {
-                    MessageBox.Show($"There is not such user");
                     return false;
                 }
             }
