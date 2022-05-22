@@ -67,7 +67,7 @@
             // 
             // btnAddShip
             // 
-            this.btnAddShip.Location = new System.Drawing.Point(763, 88);
+            this.btnAddShip.Location = new System.Drawing.Point(763, 79);
             this.btnAddShip.Name = "btnAddShip";
             this.btnAddShip.Size = new System.Drawing.Size(106, 39);
             this.btnAddShip.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // btnAddCatch
             // 
-            this.btnAddCatch.Location = new System.Drawing.Point(883, 88);
+            this.btnAddCatch.Location = new System.Drawing.Point(883, 79);
             this.btnAddCatch.Name = "btnAddCatch";
             this.btnAddCatch.Size = new System.Drawing.Size(106, 39);
             this.btnAddCatch.TabIndex = 4;
@@ -115,7 +115,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(763, 133);
+            this.btnDelete.Location = new System.Drawing.Point(763, 124);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(106, 39);
             this.btnDelete.TabIndex = 8;
@@ -124,7 +124,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(883, 133);
+            this.btnUpdate.Location = new System.Drawing.Point(884, 124);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 39);
             this.btnUpdate.TabIndex = 9;

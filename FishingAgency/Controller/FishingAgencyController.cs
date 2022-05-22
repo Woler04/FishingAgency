@@ -68,6 +68,16 @@ namespace FishingAgency.Controller
             }
         }
 
+        public void AddShip(FishingShip shipToAdd)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                shipToAdd.Id = fadb.FishingShips.ToList().Last().Id + 1;
+                fadb.FishingShips.Add(shipToAdd);
+                fadb.SaveChanges();
+            }
+        }
+
         public void SwitchingForms(Form from, Form to)
         {
             to.Location = from.Location;

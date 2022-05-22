@@ -98,6 +98,12 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogViews\AddShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\AddShipView.Designer.cs">
+      <DependentUpon>AddShipView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DataPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\AddShipView.resx">
+      <DependentUpon>AddShipView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

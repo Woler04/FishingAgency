@@ -24,6 +24,9 @@ namespace FishingAgency.View
         private void btnAddShip_Click(object sender, EventArgs e)
         {
             //Open Form and enter params there get the params and set it to an object to be added into the db
+            AddShipView addShip = new AddShipView();
+            addShip.Show();
+            btnShowMoreData_Click(null, null);
         }
 
         private void btnShowSomeData_Click(object sender, EventArgs e)
