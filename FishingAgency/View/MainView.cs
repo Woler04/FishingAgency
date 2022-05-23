@@ -21,14 +21,6 @@ namespace FishingAgency.View
             txtWelcome.Text = $"Welcome, {controller.GetUsername()}";
         }
 
-        private void btnAddShip_Click(object sender, EventArgs e)
-        {
-            //Open Form and enter params there get the params and set it to an object to be added into the db
-            AddShipView addShip = new AddShipView();
-            addShip.Show();
-            btnShowMoreData_Click(null, null);
-        }
-
         private void btnShowSomeData_Click(object sender, EventArgs e)
         {
             dgvFishingAgency.DataSource = controller.GetFishingShips();
@@ -43,6 +35,33 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("FishingShip");
             dgvFishingAgency.Columns.Remove("Name");
+        }
+        private void btnAddShip_Click(object sender, EventArgs e)
+        {
+            //Open Form and enter params there get the params and set it to an object to be added into the db
+            if (AddShipView.instance == null)
+            {
+                AddShipView addShip = new AddShipView();
+                addShip.Show();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (DeleteShipView.instance == null)
+            {
+                DeleteShipView deleteShip = new DeleteShipView();
+                deleteShip.Show();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (UpdateShipView.instance == null)
+            {
+                UpdateShipView addShip = new UpdateShipView();
+                addShip.Show();
+            }
         }
     }
 }

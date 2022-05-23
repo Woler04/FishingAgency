@@ -39,7 +39,8 @@ namespace FishingAgency.Controller
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 //success
-                try { 
+                try
+                {
                     User userTolog = fadb.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
                     MessageBox.Show($"{username} with {password}");
                     logedUser = userTolog;
@@ -50,6 +51,13 @@ namespace FishingAgency.Controller
                 {
                     return false;
                 }
+            }
+        }
+
+        internal void Update(string oldName, string newName, DateTime newLicense, bool newIsHobby, double newFuelConsuption)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
             }
         }
 
@@ -76,6 +84,20 @@ namespace FishingAgency.Controller
                 fadb.FishingShips.Add(shipToAdd);
                 fadb.SaveChanges();
             }
+        }
+
+        public void DeleteShip(string shipName)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                fadb.FishingShips.Remove(fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault());
+                fadb.SaveChanges();
+            }
+        }
+
+        public void Refresh()
+        {
+            GetFishingShips();
         }
 
         public void SwitchingForms(Form from, Form to)

@@ -98,6 +98,18 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogViews\UpdateShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateShipView.Designer.cs">
+      <DependentUpon>UpdateShipView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\DeleteShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\DeleteShipView.Designer.cs">
+      <DependentUpon>DeleteShipView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogViews\AddShipView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\UpdateShipView.resx">
+      <DependentUpon>UpdateShipView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\DeleteShipView.resx">
+      <DependentUpon>DeleteShipView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogViews\AddShipView.resx">
       <DependentUpon>AddShipView.cs</DependentUpon>

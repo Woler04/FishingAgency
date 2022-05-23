@@ -15,10 +15,15 @@ namespace FishingAgency.View
     public partial class AddShipView : Form
     {
         FishingAgencyController controller;
+        public static AddShipView instance = null;
         public AddShipView()
         {
-            InitializeComponent();
-            controller = new FishingAgencyController();
+            if (instance == null)
+            {
+                InitializeComponent();
+                controller = new FishingAgencyController();
+                instance = this;
+            }
         }
 
         private void btnAddShip_Click(object sender, EventArgs e)
@@ -30,6 +35,7 @@ namespace FishingAgency.View
                 FuelUsage = (double)nudFuelConsumption.Value
             };
             controller.AddShip(shipToAdd);
+            instance = null;
             this.Close();
         }
     }

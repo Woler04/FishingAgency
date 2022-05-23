@@ -33,8 +33,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddShip = new System.Windows.Forms.Button();
             this.btnAddCatch = new System.Windows.Forms.Button();
-            this.btnShowSomeData = new System.Windows.Forms.Button();
-            this.btnShowMoreData = new System.Windows.Forms.Button();
+            this.btnShowShips = new System.Windows.Forms.Button();
+            this.btnShowUsers = new System.Windows.Forms.Button();
             this.txtWelcome = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -84,25 +84,25 @@
             this.btnAddCatch.Text = "Add Catch";
             this.btnAddCatch.UseVisualStyleBackColor = true;
             // 
-            // btnShowSomeData
+            // btnShowShips
             // 
-            this.btnShowSomeData.Location = new System.Drawing.Point(762, 453);
-            this.btnShowSomeData.Name = "btnShowSomeData";
-            this.btnShowSomeData.Size = new System.Drawing.Size(227, 23);
-            this.btnShowSomeData.TabIndex = 5;
-            this.btnShowSomeData.Text = "Show Something";
-            this.btnShowSomeData.UseVisualStyleBackColor = true;
-            this.btnShowSomeData.Click += new System.EventHandler(this.btnShowSomeData_Click);
+            this.btnShowShips.Location = new System.Drawing.Point(762, 453);
+            this.btnShowShips.Name = "btnShowShips";
+            this.btnShowShips.Size = new System.Drawing.Size(227, 23);
+            this.btnShowShips.TabIndex = 5;
+            this.btnShowShips.Text = "Show Ships";
+            this.btnShowShips.UseVisualStyleBackColor = true;
+            this.btnShowShips.Click += new System.EventHandler(this.btnShowSomeData_Click);
             // 
-            // btnShowMoreData
+            // btnShowUsers
             // 
-            this.btnShowMoreData.Location = new System.Drawing.Point(762, 482);
-            this.btnShowMoreData.Name = "btnShowMoreData";
-            this.btnShowMoreData.Size = new System.Drawing.Size(227, 23);
-            this.btnShowMoreData.TabIndex = 6;
-            this.btnShowMoreData.Text = "Show Other thing";
-            this.btnShowMoreData.UseVisualStyleBackColor = true;
-            this.btnShowMoreData.Click += new System.EventHandler(this.btnShowMoreData_Click);
+            this.btnShowUsers.Location = new System.Drawing.Point(762, 482);
+            this.btnShowUsers.Name = "btnShowUsers";
+            this.btnShowUsers.Size = new System.Drawing.Size(227, 23);
+            this.btnShowUsers.TabIndex = 6;
+            this.btnShowUsers.Text = "Show Users";
+            this.btnShowUsers.UseVisualStyleBackColor = true;
+            this.btnShowUsers.Click += new System.EventHandler(this.btnShowMoreData_Click);
             // 
             // txtWelcome
             // 
@@ -121,6 +121,7 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -130,6 +131,7 @@
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // MainView
             // 
@@ -139,8 +141,8 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtWelcome);
-            this.Controls.Add(this.btnShowMoreData);
-            this.Controls.Add(this.btnShowSomeData);
+            this.Controls.Add(this.btnShowUsers);
+            this.Controls.Add(this.btnShowShips);
             this.Controls.Add(this.btnAddCatch);
             this.Controls.Add(this.btnAddShip);
             this.Controls.Add(this.lblTitle);
@@ -162,8 +164,8 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnAddShip;
         private System.Windows.Forms.Button btnAddCatch;
-        private System.Windows.Forms.Button btnShowSomeData;
-        private System.Windows.Forms.Button btnShowMoreData;
+        private System.Windows.Forms.Button btnShowShips;
+        private System.Windows.Forms.Button btnShowUsers;
         private System.Windows.Forms.Label txtWelcome;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
