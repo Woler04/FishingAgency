@@ -34,6 +34,7 @@ namespace FishingAgency.View
                 LicenseExpiration = dtpLicense.Value,
                 FuelUsage = (double)nudFuelConsumption.Value
             };
+
             controller.AddShip(shipToAdd);
             instance = null;
             this.Close();

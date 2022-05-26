@@ -28,7 +28,15 @@ namespace FishingAgency.View
 
         private void btnUpdateShip_Click(object sender, EventArgs e)
         {
-            controller.Update(txtName.Text, txtNewName.Text, dtpLicense.Value, cbIsHoby.Checked, (double)nudFuelConsumption.Value);
+            FishingShip newShip = new FishingShip()
+            {
+                Name = txtNewName.Text,
+                LicenseExpiration = dtpLicense.Value,
+                isForHobby = cbIsHoby.Checked,
+                FuelUsage = (double)nudFuelConsumption.Value
+            };
+
+            controller.Update(newShip, txtName.Text);
             instance = null;
             this.Close();
         }

@@ -26,19 +26,34 @@ namespace FishingAgency.Controller
             }
         }
 
-        internal void Update(string oldName, string newName, DateTime newLicense, bool newIsHobby, double newFuelConsuption)
-        {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
-            {
-            }
-        }
-
         public void AddShip(FishingShip shipToAdd)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 shipToAdd.Id = fadb.FishingShips.ToList().Last().Id + 1;
                 fadb.FishingShips.Add(shipToAdd);
+                fadb.SaveChanges();
+            }
+        }
+
+        public void Update(FishingShip ship, string oldName)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip shipToUpdate = fadb.FishingShips.Where(s => s.Name == oldName).FirstOrDefault();
+
+                if (shipToUpdate != null)
+                {
+                    shipToUpdate.Name = ship.Name;
+                    shipToUpdate.isForHobby = ship.isForHobby;
+                    shipToUpdate.FuelUsage = ship.FuelUsage;
+                    shipToUpdate.LicenseExpiration = ship.LicenseExpiration;
+                }
+                else
+                {
+                    AddShip(ship);
+                }
+
                 fadb.SaveChanges();
             }
         }
@@ -63,6 +78,7 @@ namespace FishingAgency.Controller
                         return true;
                     }
                 }
+
                 return false;
             }
         }

@@ -15,6 +15,7 @@ namespace FishingAgency.View
     {
         private FishingAgencyController controller;
         private RegistrationController regController;
+
         public MainView()
         {
             InitializeComponent();
