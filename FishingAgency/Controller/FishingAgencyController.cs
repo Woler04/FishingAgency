@@ -10,13 +10,6 @@ namespace FishingAgency.Controller
 {
     internal class FishingAgencyController
     {
-        static private User logedUser;
-
-        public string GetUsername()
-        {
-            return logedUser.Name;
-        }
-
         public List<FishingShip> GetFishingShips()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
@@ -33,46 +26,10 @@ namespace FishingAgency.Controller
             }
         }
 
-        public bool Login(string username, string password)
-        {
-            //add more validations
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
-            {
-                //success
-                try
-                {
-                    User userTolog = fadb.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
-                    MessageBox.Show($"{username} with {password}");
-                    logedUser = userTolog;
-                    return true;
-                }
-                //login fail
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
         internal void Update(string oldName, string newName, DateTime newLicense, bool newIsHobby, double newFuelConsuption)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-            }
-        }
-
-        public void Register(string fullName, string username, string password, string shipName)
-        {
-            //add more validations
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
-            {
-                User user = new User()
-                {
-                    Name = fullName,
-                    Username = username,
-                    Password = password,
-                    ShipId = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault().Id
-                };
             }
         }
 
@@ -92,6 +49,21 @@ namespace FishingAgency.Controller
             {
                 fadb.FishingShips.Remove(fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault());
                 fadb.SaveChanges();
+            }
+        }
+
+        public bool ValidateUsername(string usernameToAdd)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                foreach (User user in GetFishermans())
+                {
+                    if (user.Username == usernameToAdd)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
 

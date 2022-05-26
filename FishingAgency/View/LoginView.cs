@@ -14,11 +14,13 @@ namespace FishingAgency.View
     public partial class LoginView : Form
     {
         FishingAgencyController controller;
+        RegistrationController regController;
 
         public LoginView()
         {
             InitializeComponent();
             controller = new FishingAgencyController();
+            regController = new RegistrationController();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -26,7 +28,14 @@ namespace FishingAgency.View
             //MessageBox.Show($"test");
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            if (controller.Login(username, password))
+
+            if (regController.Validate(txtUsername.Text) ||
+            regController.Validate(txtPassword.Text))
+            {
+                return;
+            }
+
+            if (regController.Login(username, password))
             {
                 controller.SwitchingForms(this, new MainView());
             }

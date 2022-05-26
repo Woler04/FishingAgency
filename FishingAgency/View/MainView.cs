@@ -14,11 +14,14 @@ namespace FishingAgency.View
     public partial class MainView : Form
     {
         private FishingAgencyController controller;
+        private RegistrationController regController;
         public MainView()
         {
             InitializeComponent();
             controller = new FishingAgencyController();
-            txtWelcome.Text = $"Welcome, {controller.GetUsername()}";
+            regController = new RegistrationController();
+
+            txtWelcome.Text = $"Welcome, {regController.GetUsername()}";
         }
 
         private void btnShowSomeData_Click(object sender, EventArgs e)
