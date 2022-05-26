@@ -26,7 +26,7 @@ namespace FishingAgency.View
         {
             if (regController.Validate(txtFullName.Text) ||
             regController.Validate(txtUsername.Text) ||
-            regController.Validate(txtPassword.Text) ||
+            regController.Validate(txtPassword.Text)||
             regController.Validate(txtShipName.Text))
             {
                 return;
@@ -44,7 +44,6 @@ namespace FishingAgency.View
             }
 
             regController.Register(fullName, username, password, shipName);
-
             LoginViewSummoning();
         }
 

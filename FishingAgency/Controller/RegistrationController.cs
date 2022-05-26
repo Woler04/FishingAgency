@@ -53,7 +53,7 @@ namespace FishingAgency.Controller
                     Name = fullName,
                     Username = username,
                     Password = password,
-                    ShipId = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault().Id,
+                    ShipId = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault().Id
                 };
                 if (fadb.Users.ToList().LastOrDefault() == null)
                 {

@@ -62,7 +62,15 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                fadb.FishingShips.Remove(fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault());
+                FishingShip shipToDelete = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault();
+                if (shipToDelete.Users.ToList() == null)
+                {
+                    fadb.FishingShips.Remove(shipToDelete);
+                }
+                else 
+                {
+                    MessageBox.Show("Unable to delete this ship because it's connected with people", "Error 16", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 fadb.SaveChanges();
             }
         }
