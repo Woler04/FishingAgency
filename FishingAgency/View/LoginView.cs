@@ -25,7 +25,6 @@ namespace FishingAgency.View
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show($"test");
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
@@ -38,6 +37,7 @@ namespace FishingAgency.View
             if (regController.Login(username, password))
             {
                 controller.SwitchingForms(this, new MainView());
+                return;
             }
             else
             {
@@ -49,9 +49,15 @@ namespace FishingAgency.View
             }
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            controller.SwitchingForms(this, new RegisterView());
+        }
+
         private void lblForgottenPassword_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Please try to remeber it!", "You forgor?", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
     }
 }

@@ -36,6 +36,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgottenPassword = new System.Windows.Forms.Label();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblLoginTitle
@@ -107,7 +108,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(109, 449);
+            this.btnLogin.Location = new System.Drawing.Point(177, 451);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(111, 40);
             this.btnLogin.TabIndex = 6;
@@ -130,6 +131,22 @@
             this.lblForgottenPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblForgottenPassword.Click += new System.EventHandler(this.lblForgottenPassword_Click);
             // 
+            // btnRegister
+            // 
+            this.btnRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegister.AutoSize = true;
+            this.btnRegister.BackColor = System.Drawing.Color.Cyan;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(29, 451);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(126, 40);
+            this.btnRegister.TabIndex = 8;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +154,7 @@
             this.BackgroundImage = global::FishingAgency.Properties.Resources.loginorregister;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(334, 521);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblForgottenPassword);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -163,5 +181,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblForgottenPassword;
+        private System.Windows.Forms.Button btnRegister;
     }
 }

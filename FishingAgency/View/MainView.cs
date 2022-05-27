@@ -22,7 +22,7 @@ namespace FishingAgency.View
             controller = new FishingAgencyController();
             regController = new RegistrationController();
 
-            txtWelcome.Text = $"Welcome, {regController.GetUsername()}";
+            txtWelcome.Text = $"Welcome, {regController.GetLogedName()}";
         }
 
         private void btnShowSomeData_Click(object sender, EventArgs e)
@@ -31,14 +31,18 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Catches");
             dgvFishingAgency.Columns.Remove("Users");
+            dgvFishingAgency.Columns.Remove("ShipName");
         }
 
         private void btnShowMoreData_Click(object sender, EventArgs e)
         {
             dgvFishingAgency.DataSource = controller.GetFishermans();
             dgvFishingAgency.Columns.Remove("Id");
+            dgvFishingAgency.Columns.Remove("Password");
             dgvFishingAgency.Columns.Remove("FishingShip");
             dgvFishingAgency.Columns.Remove("Name");
+            dgvFishingAgency.Columns.Remove("ShipId");
+            dgvFishingAgency.Columns.Add("ShipName", "Current Ship");
         }
         private void btnAddShip_Click(object sender, EventArgs e)
         {
@@ -65,6 +69,15 @@ namespace FishingAgency.View
             {
                 UpdateShipView addShip = new UpdateShipView();
                 addShip.Show();
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (UpdateUserView.instance == null)
+            {
+                UpdateUserView updateUser = new UpdateUserView();
+                updateUser.Show();
             }
         }
     }

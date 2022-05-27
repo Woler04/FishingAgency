@@ -36,8 +36,9 @@
             this.btnShowShips = new System.Windows.Forms.Button();
             this.btnShowUsers = new System.Windows.Forms.Button();
             this.txtWelcome = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDeleteShip = new System.Windows.Forms.Button();
+            this.btnUpdateShip = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             // 
             // btnAddCatch
             // 
-            this.btnAddCatch.Location = new System.Drawing.Point(883, 79);
+            this.btnAddCatch.Location = new System.Drawing.Point(763, 188);
             this.btnAddCatch.Name = "btnAddCatch";
             this.btnAddCatch.Size = new System.Drawing.Size(106, 39);
             this.btnAddCatch.TabIndex = 4;
@@ -107,39 +108,50 @@
             // txtWelcome
             // 
             this.txtWelcome.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWelcome.Location = new System.Drawing.Point(760, 9);
+            this.txtWelcome.Location = new System.Drawing.Point(12, 9);
             this.txtWelcome.Name = "txtWelcome";
-            this.txtWelcome.Size = new System.Drawing.Size(238, 48);
+            this.txtWelcome.Size = new System.Drawing.Size(238, 40);
             this.txtWelcome.TabIndex = 7;
             this.txtWelcome.Text = "Welcome, DefaultUser";
             // 
-            // btnDelete
+            // btnDeleteShip
             // 
-            this.btnDelete.Location = new System.Drawing.Point(763, 124);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(106, 39);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDeleteShip.Location = new System.Drawing.Point(763, 124);
+            this.btnDeleteShip.Name = "btnDeleteShip";
+            this.btnDeleteShip.Size = new System.Drawing.Size(106, 39);
+            this.btnDeleteShip.TabIndex = 8;
+            this.btnDeleteShip.Text = "Delete Ship";
+            this.btnDeleteShip.UseVisualStyleBackColor = true;
+            this.btnDeleteShip.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnUpdate
+            // btnUpdateShip
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(884, 124);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(105, 39);
-            this.btnUpdate.TabIndex = 9;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdateShip.Location = new System.Drawing.Point(884, 79);
+            this.btnUpdateShip.Name = "btnUpdateShip";
+            this.btnUpdateShip.Size = new System.Drawing.Size(105, 39);
+            this.btnUpdateShip.TabIndex = 9;
+            this.btnUpdateShip.Text = "Update Ship";
+            this.btnUpdateShip.UseVisualStyleBackColor = true;
+            this.btnUpdateShip.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.Location = new System.Drawing.Point(15, 50);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(227, 23);
+            this.btnUpdateUser.TabIndex = 10;
+            this.btnUpdateUser.Text = "Account Settings";
+            this.btnUpdateUser.UseVisualStyleBackColor = true;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdateUser);
+            this.Controls.Add(this.btnUpdateShip);
+            this.Controls.Add(this.btnDeleteShip);
             this.Controls.Add(this.txtWelcome);
             this.Controls.Add(this.btnShowUsers);
             this.Controls.Add(this.btnShowShips);
@@ -167,7 +179,8 @@
         private System.Windows.Forms.Button btnShowShips;
         private System.Windows.Forms.Button btnShowUsers;
         private System.Windows.Forms.Label txtWelcome;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDeleteShip;
+        private System.Windows.Forms.Button btnUpdateShip;
+        private System.Windows.Forms.Button btnUpdateUser;
     }
 }

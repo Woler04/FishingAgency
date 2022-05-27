@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -98,6 +98,12 @@
     </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateUserView.Designer.cs">
+      <DependentUpon>UpdateUserView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DialogViews\UpdateShipView.cs">
       <SubType>Form</SubType>
@@ -162,6 +168,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\UpdateUserView.resx">
+      <DependentUpon>UpdateUserView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\DialogViews\UpdateShipView.resx">
       <DependentUpon>UpdateShipView.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,7 +226,7 @@
     </Content>
     <None Include="Resources\hubava voda.jpg" />
     <None Include="Resources\po hubava voda.jpeg" />
-    <Content Include="icon.ico" />
+    <Content Include="Resources\icon.ico" />
     <Content Include="Model\FishingAgencyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FishingAgencyModel.Context.cs</LastGenOutput>
