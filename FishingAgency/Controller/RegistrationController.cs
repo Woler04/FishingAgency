@@ -1,4 +1,5 @@
 ﻿using FishingAgency.Model;
+using FishingAgency.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,11 +51,23 @@ namespace FishingAgency.Controller
             }
         }
 
-        public void Register(string fullName, string username, string password, string shipName)
+        public bool Register(string fullName, string username, string password, string shipName)
         {
             //add more validations
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
+                FishingShip shipToCheck = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault();
+                if (shipToCheck == null)
+                {
+                    var res = MessageBox.Show($"There is not such ship. Want to add one?", "No ship?", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        AddShipView addShip = new AddShipView();
+                        addShip.Show();
+                    }
+                    return false;
+                }
+
                 User user = new User()
                 {
                     Name = fullName,
@@ -62,6 +75,7 @@ namespace FishingAgency.Controller
                     Password = password,
                     ShipId = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault().Id
                 };
+
                 if (fadb.Users.ToList().LastOrDefault() == null)
                 {
                     user.Id = 0;
@@ -72,6 +86,7 @@ namespace FishingAgency.Controller
                 }
                 fadb.Users.Add(user);
                 fadb.SaveChanges();
+                return true;
             }
         }
 
@@ -89,6 +104,24 @@ namespace FishingAgency.Controller
                 }
 
                 fadb.SaveChanges();
+            }
+        }
+
+        public void NewPassord(string username, string newPassword, Form formToClose)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                User userToUpdate = fadb.Users.Where(u => u.Username == username).FirstOrDefault();
+                if (userToUpdate != null)
+                {
+                    userToUpdate.Password = newPassword;
+                    fadb.SaveChanges();
+                    formToClose.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No username");
+                }
             }
         }
 

@@ -83,6 +83,16 @@ namespace FishingAgency.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nopassword {
+            get {
+                object obj = ResourceManager.GetObject("nopassword", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ocean {
             get {
                 object obj = ResourceManager.GetObject("ocean", resourceCulture);

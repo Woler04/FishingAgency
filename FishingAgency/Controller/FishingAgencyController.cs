@@ -26,6 +26,14 @@ namespace FishingAgency.Controller
             }
         }
 
+        public FishingShip GetShip(int id)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.Users.ToList().ElementAt(id).FishingShip;
+            }
+        }
+
         public void AddShip(FishingShip shipToAdd)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())

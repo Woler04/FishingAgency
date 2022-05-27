@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FishingAgency.Controller;
+using FishingAgency.View.DialogViews;
 
 namespace FishingAgency.View
 {
@@ -56,7 +57,9 @@ namespace FishingAgency.View
 
         private void lblForgottenPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Please try to remeber it!", "You forgor?", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //MessageBox.Show("Sucks to be you", "You forgor?", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            ForgottenPasswordView youForgor = new ForgottenPasswordView();
+            youForgor.Show();
         }
 
     }

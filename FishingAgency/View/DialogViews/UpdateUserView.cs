@@ -14,7 +14,6 @@ namespace FishingAgency.View
 {
     public partial class UpdateUserView : Form
     {
-        FishingAgencyController controller;
         RegistrationController regController;
         public static UpdateUserView instance = null;
         public UpdateUserView()
@@ -22,10 +21,8 @@ namespace FishingAgency.View
             if (instance == null)
             {
                 InitializeComponent();
-                controller = new FishingAgencyController();
                 regController = new RegistrationController();
                 instance = this;
-
                 txtUsername.Text = regController.GetLogedName();
             }
         }

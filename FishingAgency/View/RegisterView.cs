@@ -43,8 +43,10 @@ namespace FishingAgency.View
                 return;
             }
 
-            regController.Register(fullName, username, password, shipName);
-            LoginViewSummoning();
+            if (regController.Register(fullName, username, password, shipName))
+            {
+                LoginViewSummoning();
+            }
         }
 
         private void lblLoginQ_Click(object sender, EventArgs e)

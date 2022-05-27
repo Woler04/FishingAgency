@@ -103,9 +103,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(236, 229);
+            this.ControlBox = false;
             this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.lblOldPassword);
             this.Controls.Add(this.txtNewPassword);
@@ -117,6 +117,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UpdateUserView";
+            this.ShowInTaskbar = false;
             this.Text = "Update ship";
             this.ResumeLayout(false);
             this.PerformLayout();

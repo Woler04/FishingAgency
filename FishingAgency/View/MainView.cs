@@ -31,7 +31,10 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Catches");
             dgvFishingAgency.Columns.Remove("Users");
+            if(dgvFishingAgency.Columns.Contains("ShipName"))
+            { 
             dgvFishingAgency.Columns.Remove("ShipName");
+            }
         }
 
         private void btnShowMoreData_Click(object sender, EventArgs e)
@@ -40,9 +43,16 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Password");
             dgvFishingAgency.Columns.Remove("FishingShip");
-            dgvFishingAgency.Columns.Remove("Name");
+            dgvFishingAgency.Columns.Remove("Username");
             dgvFishingAgency.Columns.Remove("ShipId");
             dgvFishingAgency.Columns.Add("ShipName", "Current Ship");
+            dgvFishingAgency.Columns["ShipName"].Width = 200;
+            dgvFishingAgency.Columns["Name"].Width = 200;
+
+            for (int i = 0; i < dgvFishingAgency.RowCount; i++)
+            {
+                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShip(controller.GetFishermans()[i].Id-1).Name;
+            }
         }
         private void btnAddShip_Click(object sender, EventArgs e)
         {

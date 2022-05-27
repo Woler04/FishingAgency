@@ -99,6 +99,12 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogViews\ForgottenPasswordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\ForgottenPasswordView.Designer.cs">
+      <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogViews\UpdateUserView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\ForgottenPasswordView.resx">
+      <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogViews\UpdateUserView.resx">
       <DependentUpon>UpdateUserView.cs</DependentUpon>
@@ -240,6 +249,7 @@
     <None Include="Resources\loginorregister.jpg" />
     <None Include="Resources\ocean.jpg" />
     <None Include="Resources\underwater.jpg" />
+    <None Include="Resources\nopassword.png" />
     <Content Include="Scripts\dbo.Table_Catch_ShipsFK.sql" />
     <Content Include="Scripts\dbo.Table_Catch.sql" />
     <Content Include="Scripts\dbo.Table_Ships.sql" />
