@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FishingAgency.Model;
+using FishingAgency.View;
 
 namespace FishingAgency.Controller
 {
@@ -97,11 +98,6 @@ namespace FishingAgency.Controller
 
                 return false;
             }
-        }
-
-        public void Refresh()
-        {
-            GetFishingShips();
         }
 
         public void SwitchingForms(Form from, Form to)

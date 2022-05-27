@@ -54,6 +54,7 @@ namespace FishingAgency.View
                 dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShip(controller.GetFishermans()[i].Id-1).Name;
             }
         }
+
         private void btnAddShip_Click(object sender, EventArgs e)
         {
             //Open Form and enter params there get the params and set it to an object to be added into the db
@@ -90,5 +91,6 @@ namespace FishingAgency.View
                 updateUser.Show();
             }
         }
+
     }
 }
