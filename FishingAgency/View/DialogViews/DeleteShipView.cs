@@ -14,21 +14,32 @@ namespace FishingAgency.View
 {
     public partial class DeleteShipView : Form
     {
-        FishingAgencyController controller;
+        DeleteShipController deleteShipController;
         public static DeleteShipView instance = null;
         public DeleteShipView()
         {
             if (instance == null)
             {
                 InitializeComponent();
-                controller = new FishingAgencyController();
+                deleteShipController = new DeleteShipController();
                 instance = this;
+            }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
             }
         }
 
         private void btnDeleteShip_Click(object sender, EventArgs e)
         {
-            controller.DeleteShip(txtName.Text);
+            if (Utility.Validate(txtName.Text))
+            {
+                return;
+            }
+
+            deleteShipController.DeleteShip(txtName.Text);
             instance = null;
             this.Close();
         }

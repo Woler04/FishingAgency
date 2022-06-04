@@ -10,14 +10,7 @@ using System.Windows.Forms;
 namespace FishingAgency.Controller
 {
     public class RegistrationController
-    {
-        static private User logedUser;
-
-        public string GetLogedName()
-        {
-            return logedUser.Name;
-        }
-
+    { 
         public bool Login(string username, string password)
         {
             //add more validations
@@ -36,7 +29,7 @@ namespace FishingAgency.Controller
                         }
 
                         MessageBox.Show($"Welcome {userTolog.Name}");
-                        logedUser = userTolog;
+                        Utility.LoggedUser = userTolog;
                         return true;
                     }
 
@@ -90,23 +83,6 @@ namespace FishingAgency.Controller
             }
         }
 
-        public void UpdateUser(User newData, string oldPassword)
-        {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
-            {
-                User userToUpdate = fadb.Users.Where(u => u.Password == oldPassword).FirstOrDefault();
-
-                if (userToUpdate != null)
-                {
-                    userToUpdate.Name = newData.Name;
-                    userToUpdate.Password = newData.Password;
-                    userToUpdate.ShipId = logedUser.ShipId;
-                }
-
-                fadb.SaveChanges();
-            }
-        }
-
         public void NewPassord(string username, string newPassword, Form formToClose)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
@@ -122,19 +98,6 @@ namespace FishingAgency.Controller
                 {
                     MessageBox.Show("No username");
                 }
-            }
-        }
-
-        public bool Validate(string textToValidate)
-        {
-            if (textToValidate.Length < 0 || String.IsNullOrWhiteSpace(textToValidate) || String.IsNullOrEmpty(textToValidate))
-            {
-                MessageBox.Show("Please don't leave empty fields");
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
     }

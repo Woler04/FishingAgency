@@ -22,7 +22,7 @@ namespace FishingAgency.View
             controller = new FishingAgencyController();
             regController = new RegistrationController();
 
-            txtWelcome.Text = $"Welcome, {regController.GetLogedName()}";
+            txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
         }
 
         private void btnShowSomeData_Click(object sender, EventArgs e)

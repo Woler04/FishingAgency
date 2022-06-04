@@ -14,20 +14,33 @@ namespace FishingAgency.View
 {
     public partial class UpdateShipView : Form
     {
-        FishingAgencyController controller;
+        UpdateShipController updateShipController;
         public static UpdateShipView instance = null;
         public UpdateShipView()
         {
             if (instance == null)
             {
                 InitializeComponent();
-                controller = new FishingAgencyController();
+                updateShipController = new UpdateShipController();
                 instance = this;
+            }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
             }
         }
 
         private void btnUpdateShip_Click(object sender, EventArgs e)
         {
+            if (Utility.Validate(txtNewName.Text) ||
+            Utility.Validate(dtpLicense.Text) ||
+            Utility.Validate(nudFuelConsumption.Value.ToString()))
+            {
+                return;
+            }
+
             FishingShip newShip = new FishingShip()
             {
                 Name = txtNewName.Text,
@@ -36,7 +49,7 @@ namespace FishingAgency.View
                 FuelUsage = (double)nudFuelConsumption.Value
             };
 
-            controller.Update(newShip, txtName.Text);
+            updateShipController.Update(newShip, txtName.Text);
             instance = null;
             this.Close();
         }

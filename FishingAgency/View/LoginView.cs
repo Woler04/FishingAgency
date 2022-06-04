@@ -29,15 +29,15 @@ namespace FishingAgency.View
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            if (regController.Validate(txtUsername.Text) ||
-            regController.Validate(txtPassword.Text))
+            if (Utility.Validate(txtUsername.Text) ||
+            Utility.Validate(txtPassword.Text))
             {
                 return;
             }
 
             if (regController.Login(username, password))
             {
-                controller.SwitchingForms(this, new MainView());
+                Utility.SwitchingForms(this, new MainView());
                 return;
             }
             else
@@ -45,14 +45,14 @@ namespace FishingAgency.View
                 var res = MessageBox.Show($"There is not such user. Want to create an account?", "No Account?", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
-                    controller.SwitchingForms(this, new RegisterView());
+                    Utility.SwitchingForms(this, new RegisterView());
                 }
             }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            controller.SwitchingForms(this, new RegisterView());
+            Utility.SwitchingForms(this, new RegisterView());
         }
 
         private void lblForgottenPassword_Click(object sender, EventArgs e)

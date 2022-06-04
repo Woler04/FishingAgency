@@ -14,16 +14,22 @@ namespace FishingAgency.View
 {
     public partial class UpdateUserView : Form
     {
-        RegistrationController regController;
+        UpdateUserController updateUserControllerController;
         public static UpdateUserView instance = null;
         public UpdateUserView()
         {
             if (instance == null)
             {
                 InitializeComponent();
-                regController = new RegistrationController();
+                updateUserControllerController = new UpdateUserController();
                 instance = this;
-                txtUsername.Text = regController.GetLogedName();
+                txtUsername.Text = Utility.LoggedUser.Username;
+            }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
             }
         }
 
@@ -31,14 +37,22 @@ namespace FishingAgency.View
         {
             User newUser = new User()
             {
-                Name = regController.GetLogedName(),
+                Name = Utility.LoggedUser.Name,
                 Username = txtUsername.Text,
                 Password = txtNewPassword.Text,
             };
 
-            regController.UpdateUser(newUser, txtOldPassword.Text);
-            instance = null;
-            this.Close();
+            if (Utility.LoggedUser.Password != txtOldPassword.Text)
+            {
+                MessageBox.Show("Not matching passwords");
+                return;
+            }
+
+            if (updateUserControllerController.UpdateUser(newUser, txtOldPassword.Text))
+            {
+                instance = null;
+                this.Close();
+            }
         }
     }
 }

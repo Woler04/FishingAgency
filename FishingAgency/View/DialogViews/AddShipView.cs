@@ -24,10 +24,23 @@ namespace FishingAgency.View
                 controller = new FishingAgencyController();
                 instance = this;
             }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
+            }
         }
 
         private void btnAddShip_Click(object sender, EventArgs e)
         {
+            if (Utility.Validate(txtName.Text) ||
+            Utility.Validate(dtpLicense.Text) ||
+            Utility.Validate(nudFuelConsumption.Value.ToString()))
+            {
+                return;
+            }
+
             FishingShip shipToAdd = new FishingShip
             {
                 Name = txtName.Text,
