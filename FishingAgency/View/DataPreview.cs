@@ -35,7 +35,7 @@ namespace FishingAgency
 
         private void btnShowFishermans_Click(object sender, EventArgs e)
         {
-            dgvFishingAgency.DataSource = controller.GetFishermans();
+            dgvFishingAgency.DataSource = controller.GetUsers();
             dgvFishingAgency.Columns.Remove("FishingShip");
         }
     }

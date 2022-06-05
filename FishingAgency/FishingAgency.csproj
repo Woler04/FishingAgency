@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddShipController.cs" />
     <Compile Include="Controller\DeleteShipController.cs" />
     <Compile Include="Controller\FishingAgencyController.cs" />
     <Compile Include="Controller\RegistrationController.cs" />

@@ -19,7 +19,7 @@ namespace FishingAgency.Controller
             }
         }
 
-        public List<User> GetFishermans()
+        public List<User> GetUsers()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
@@ -32,16 +32,6 @@ namespace FishingAgency.Controller
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 return fadb.Users.ToList().ElementAt(id).FishingShip;
-            }
-        }
-
-        public void AddShip(FishingShip shipToAdd)
-        {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
-            {
-                shipToAdd.Id = fadb.FishingShips.ToList().Last().Id + 1;
-                fadb.FishingShips.Add(shipToAdd);
-                fadb.SaveChanges();
             }
         }
     }

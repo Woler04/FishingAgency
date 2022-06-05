@@ -49,7 +49,7 @@ namespace FishingAgency.View
                 FuelUsage = (double)nudFuelConsumption.Value
             };
 
-            updateShipController.Update(newShip, txtName.Text);
+            updateShipController.UpdateShip(newShip, txtName.Text);
             instance = null;
             this.Close();
         }

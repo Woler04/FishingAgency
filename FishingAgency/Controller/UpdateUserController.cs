@@ -14,7 +14,13 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                User userToUpdate = fadb.Users.Where(u => u.Password == oldPassword && u.Username == newUser.Username).FirstOrDefault();
+                User userToUpdate = fadb.Users.Where(u => u.Password == oldPassword && u.Name == newUser.Name).FirstOrDefault();
+
+                if (Utility.ValidateUsername(newUser.Username))
+                {
+                    MessageBox.Show("This username already exist");
+                    return false;
+                }
 
                 if (userToUpdate != null && userToUpdate.Name == newUser.Name)
                 {

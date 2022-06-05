@@ -9,7 +9,7 @@ namespace FishingAgency.Controller
 {
     public class UpdateShipController
     {
-        public void Update(FishingShip ship, string oldName)
+        public void UpdateShip(FishingShip ship, string oldName)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
