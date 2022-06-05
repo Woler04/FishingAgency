@@ -27,11 +27,19 @@ namespace FishingAgency.Controller
             }
         }
 
-        public FishingShip GetShip(int id)
+        public List<Catch> GetCatches()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.Users.ToList().ElementAt(id).FishingShip;
+                return fadb.Catches.ToList();
+            }
+        }
+
+        public string GetShipsNames(int id)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.Users.ToList().ElementAt(id).FishingShip.Name;
             }
         }
     }

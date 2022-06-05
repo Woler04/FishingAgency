@@ -14,50 +14,67 @@ namespace FishingAgency.View
     public partial class MainView : Form
     {
         private FishingAgencyController controller;
-        private RegistrationController regController;
 
         public MainView()
         {
             InitializeComponent();
             controller = new FishingAgencyController();
-            regController = new RegistrationController();
-
             txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
         }
 
-        private void btnShowSomeData_Click(object sender, EventArgs e)
+        private void btnShowShips_Click(object sender, EventArgs e)
         {
+            ResetColumns();
             dgvFishingAgency.DataSource = controller.GetFishingShips();
+
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Catches");
             dgvFishingAgency.Columns.Remove("Users");
-            if(dgvFishingAgency.Columns.Contains("ShipName"))
+
+            dgvFishingAgency.Columns["Name"].Width = 200;
+            /*if(dgvFishingAgency.Columns.Contains("ShipName"))
             { 
-            dgvFishingAgency.Columns.Remove("ShipName");
+                dgvFishingAgency.Columns.Remove("ShipName");
             }
+            */
         }
 
-        private void btnShowMoreData_Click(object sender, EventArgs e)
+        ///trqq da si pecahtaneto
+        private void btnShowUsers_Click(object sender, EventArgs e)
         {
+            ResetColumns();
             dgvFishingAgency.DataSource = controller.GetUsers();
+
             dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("Password");
             dgvFishingAgency.Columns.Remove("FishingShip");
+            dgvFishingAgency.Columns.Remove("Password");
             dgvFishingAgency.Columns.Remove("Username");
             dgvFishingAgency.Columns.Remove("ShipId");
+
             dgvFishingAgency.Columns.Add("ShipName", "Current Ship");
-            dgvFishingAgency.Columns["ShipName"].Width = 200;
+
             dgvFishingAgency.Columns["Name"].Width = 200;
+            dgvFishingAgency.Columns["ShipName"].Width = 200;
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
-                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShip(controller.GetUsers()[i].Id-1).Name;
+                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id-1).ToString();
             }
         }
 
+        private void btnShowCatchses_Click(object sender, EventArgs e)
+        {
+            dgvFishingAgency.DataSource = controller.GetUsers();
+        }
+
+        private void ResetColumns()
+        {
+            dgvFishingAgency.DataSource = null;
+        }
+
+        //CRUD BUTTONS
         private void btnAddShip_Click(object sender, EventArgs e)
         {
-            //Open Form and enter params there get the params and set it to an object to be added into the db
             if (AddShipView.instance == null)
             {
                 AddShipView addShip = new AddShipView();
@@ -92,5 +109,13 @@ namespace FishingAgency.View
             }
         }
 
+        private void btnAddCatch_Click(object sender, EventArgs e)
+        {
+            if (AddCatchView.instance == null)
+            {
+                AddCatchView addCatch = new AddCatchView();
+                addCatch.Show();
+            }
+        }
     }
 }

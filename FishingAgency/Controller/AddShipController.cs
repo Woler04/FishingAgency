@@ -13,7 +13,7 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                shipToAdd.Id = fadb.FishingShips.ToList().Last().Id + 1;
+                shipToAdd.Id = fadb.FishingShips.ToList().LastOrDefault().Id + 1;
                 fadb.FishingShips.Add(shipToAdd);
                 fadb.SaveChanges();
             }

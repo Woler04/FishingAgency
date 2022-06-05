@@ -39,6 +39,7 @@
             this.btnDeleteShip = new System.Windows.Forms.Button();
             this.btnUpdateShip = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnShowCatches = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@
             this.btnAddCatch.TabIndex = 4;
             this.btnAddCatch.Text = "Add Catch";
             this.btnAddCatch.UseVisualStyleBackColor = true;
+            this.btnAddCatch.Click += new System.EventHandler(this.btnAddCatch_Click);
             // 
             // btnShowShips
             // 
@@ -93,7 +95,7 @@
             this.btnShowShips.TabIndex = 5;
             this.btnShowShips.Text = "Show Ships";
             this.btnShowShips.UseVisualStyleBackColor = true;
-            this.btnShowShips.Click += new System.EventHandler(this.btnShowSomeData_Click);
+            this.btnShowShips.Click += new System.EventHandler(this.btnShowShips_Click);
             // 
             // btnShowUsers
             // 
@@ -103,7 +105,7 @@
             this.btnShowUsers.TabIndex = 6;
             this.btnShowUsers.Text = "Show Users";
             this.btnShowUsers.UseVisualStyleBackColor = true;
-            this.btnShowUsers.Click += new System.EventHandler(this.btnShowMoreData_Click);
+            this.btnShowUsers.Click += new System.EventHandler(this.btnShowUsers_Click);
             // 
             // txtWelcome
             // 
@@ -144,11 +146,22 @@
             this.btnUpdateUser.UseVisualStyleBackColor = true;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
+            // btnShowCatches
+            // 
+            this.btnShowCatches.Location = new System.Drawing.Point(762, 424);
+            this.btnShowCatches.Name = "btnShowCatches";
+            this.btnShowCatches.Size = new System.Drawing.Size(227, 23);
+            this.btnShowCatches.TabIndex = 11;
+            this.btnShowCatches.Text = "Show Catches";
+            this.btnShowCatches.UseVisualStyleBackColor = true;
+            this.btnShowCatches.Click += new System.EventHandler(this.btnShowCatchses_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.btnShowCatches);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnUpdateShip);
             this.Controls.Add(this.btnDeleteShip);
@@ -182,5 +195,6 @@
         private System.Windows.Forms.Button btnDeleteShip;
         private System.Windows.Forms.Button btnUpdateShip;
         private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnShowCatches;
     }
 }
