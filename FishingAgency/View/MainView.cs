@@ -22,7 +22,7 @@ namespace FishingAgency.View
             controller = new FishingAgencyController();
             regController = new RegistrationController();
 
-            txtWelcome.Text = $"Welcome, {regController.GetLogedName()}";
+            txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
         }
 
         private void btnShowSomeData_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace FishingAgency.View
 
         private void btnShowMoreData_Click(object sender, EventArgs e)
         {
-            dgvFishingAgency.DataSource = controller.GetFishermans();
+            dgvFishingAgency.DataSource = controller.GetUsers();
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Password");
             dgvFishingAgency.Columns.Remove("FishingShip");
@@ -51,7 +51,7 @@ namespace FishingAgency.View
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
-                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShip(controller.GetFishermans()[i].Id-1).Name;
+                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShip(controller.GetUsers()[i].Id-1).Name;
             }
         }
 

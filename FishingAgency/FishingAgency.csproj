@@ -73,8 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddShipController.cs" />
+    <Compile Include="Controller\DeleteShipController.cs" />
     <Compile Include="Controller\FishingAgencyController.cs" />
     <Compile Include="Controller\RegistrationController.cs" />
+    <Compile Include="Controller\UpdateShipController.cs" />
+    <Compile Include="Controller\UpdateUserController.cs" />
+    <Compile Include="Controller\Utility.cs" />
     <Compile Include="Model\Catch.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>

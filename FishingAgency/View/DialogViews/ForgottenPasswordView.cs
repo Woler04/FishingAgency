@@ -14,22 +14,35 @@ namespace FishingAgency.View.DialogViews
     public partial class ForgottenPasswordView : Form
     {
         RegistrationController regController;
+        public static ForgottenPasswordView instance = null;
         public ForgottenPasswordView()
         {
-            InitializeComponent();
-            regController = new RegistrationController();
+            if (instance == null)
+            {
+                InitializeComponent();
+                regController = new RegistrationController();
+                instance = this;
+                return;
+            }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
+            }
         }
 
         private void btnSetPassword_Click(object sender, EventArgs e)
         {
-            if (regController.Validate(txtNewPassword.Text) ||
-                regController.Validate(txtUsername.Text))
+            if (Utility.Validate(txtNewPassword.Text) ||
+                Utility.Validate(txtUsername.Text))
             {
                 return;
             }
 
             regController.NewPassord(txtUsername.Text, txtNewPassword.Text, this);
-
+            instance = null;
+            this.Close();
         }
     }
 }

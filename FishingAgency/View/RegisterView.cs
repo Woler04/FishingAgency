@@ -13,21 +13,19 @@ namespace FishingAgency.View
 {
     public partial class RegisterView : Form
     {
-        FishingAgencyController controller;
         RegistrationController regController;
         public RegisterView()
         {
             InitializeComponent();
-            controller = new FishingAgencyController();
             regController = new RegistrationController();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (regController.Validate(txtFullName.Text) ||
-            regController.Validate(txtUsername.Text) ||
-            regController.Validate(txtPassword.Text)||
-            regController.Validate(txtShipName.Text))
+            if (Utility.Validate(txtFullName.Text) ||
+            Utility.Validate(txtUsername.Text) ||
+            Utility.Validate(txtPassword.Text)||
+            Utility.Validate(txtShipName.Text))
             {
                 return;
             }
@@ -37,7 +35,7 @@ namespace FishingAgency.View
             string password = txtPassword.Text;
             string shipName = txtShipName.Text;
 
-            if (controller.ValidateUsername(username))
+            if (Utility.ValidateUsername(username))
             {
                 MessageBox.Show("This username already exist");
                 return;
@@ -57,7 +55,7 @@ namespace FishingAgency.View
         private void LoginViewSummoning()
         {
             LoginView form = new LoginView();
-            controller.SwitchingForms(this, form);
+            Utility.SwitchingForms(this, form);
         }
     }
 }

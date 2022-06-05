@@ -67,13 +67,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(236, 90);
-            this.ControlBox = false;
             this.Controls.Add(this.btnDeleteShip);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblShipName);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DeleteShipView";
             this.ShowInTaskbar = false;
             this.Text = "Delete ship";

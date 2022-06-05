@@ -14,20 +14,33 @@ namespace FishingAgency.View
 {
     public partial class AddShipView : Form
     {
-        FishingAgencyController controller;
+        AddShipController addShipController;
         public static AddShipView instance = null;
         public AddShipView()
         {
             if (instance == null)
             {
                 InitializeComponent();
-                controller = new FishingAgencyController();
+                addShipController = new AddShipController();
                 instance = this;
+            }
+
+            this.FormClosed += new FormClosedEventHandler(FormClosed);
+            void FormClosed(object sender, FormClosedEventArgs e)
+            {
+                instance = null;
             }
         }
 
         private void btnAddShip_Click(object sender, EventArgs e)
         {
+            if (Utility.Validate(txtName.Text) ||
+            Utility.Validate(dtpLicense.Text) ||
+            Utility.Validate(nudFuelConsumption.Value.ToString()))
+            {
+                return;
+            }
+
             FishingShip shipToAdd = new FishingShip
             {
                 Name = txtName.Text,
@@ -35,7 +48,7 @@ namespace FishingAgency.View
                 FuelUsage = (double)nudFuelConsumption.Value
             };
 
-            controller.AddShip(shipToAdd);
+            addShipController.AddShip(shipToAdd);
             instance = null;
             this.Close();
         }

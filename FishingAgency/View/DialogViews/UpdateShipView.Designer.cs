@@ -144,7 +144,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(236, 306);
-            this.ControlBox = false;
             this.Controls.Add(this.txtNewName);
             this.Controls.Add(this.lblNewName);
             this.Controls.Add(this.btnAddShip);
@@ -158,6 +157,8 @@
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UpdateShipView";
             this.ShowInTaskbar = false;
             this.Text = "Update ship";
