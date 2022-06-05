@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FishingAgency.Model;
+using FishingAgency.View;
 
 namespace FishingAgency.Controller
 {
@@ -17,11 +19,19 @@ namespace FishingAgency.Controller
             }
         }
 
-        public List<User> GetFishermans()
+        public List<User> GetUsers()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 return fadb.Users.ToList();
+            }
+        }
+
+        public FishingShip GetShip(int id)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.Users.ToList().ElementAt(id).FishingShip;
             }
         }
     }

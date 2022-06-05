@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -70,7 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddShipController.cs" />
+    <Compile Include="Controller\DeleteShipController.cs" />
     <Compile Include="Controller\FishingAgencyController.cs" />
+    <Compile Include="Controller\RegistrationController.cs" />
+    <Compile Include="Controller\UpdateShipController.cs" />
+    <Compile Include="Controller\UpdateUserController.cs" />
+    <Compile Include="Controller\Utility.cs" />
     <Compile Include="Model\Catch.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
@@ -95,6 +104,36 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogViews\ForgottenPasswordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\ForgottenPasswordView.Designer.cs">
+      <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateUserView.Designer.cs">
+      <DependentUpon>UpdateUserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateShipView.Designer.cs">
+      <DependentUpon>UpdateShipView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\DeleteShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\DeleteShipView.Designer.cs">
+      <DependentUpon>DeleteShipView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\AddShipView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\AddShipView.Designer.cs">
+      <DependentUpon>AddShipView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DataPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +153,24 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RegisterView.Designer.cs">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\DataPreview.resx">
       <DependentUpon>DataPreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,8 +179,32 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\ForgottenPasswordView.resx">
+      <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\UpdateUserView.resx">
+      <DependentUpon>UpdateUserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\UpdateShipView.resx">
+      <DependentUpon>UpdateShipView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\DeleteShipView.resx">
+      <DependentUpon>DeleteShipView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\AddShipView.resx">
+      <DependentUpon>AddShipView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RegisterView.resx">
+      <DependentUpon>RegisterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\FishingAgencyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -159,6 +240,7 @@
     </Content>
     <None Include="Resources\hubava voda.jpg" />
     <None Include="Resources\po hubava voda.jpeg" />
+    <Content Include="Resources\icon.ico" />
     <Content Include="Model\FishingAgencyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FishingAgencyModel.Context.cs</LastGenOutput>
@@ -169,6 +251,10 @@
       <DependentUpon>FishingAgencyModel.edmx</DependentUpon>
       <LastGenOutput>FishingAgencyModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\loginorregister.jpg" />
+    <None Include="Resources\ocean.jpg" />
+    <None Include="Resources\underwater.jpg" />
+    <None Include="Resources\nopassword.png" />
     <Content Include="Scripts\dbo.Table_Catch_ShipsFK.sql" />
     <Content Include="Scripts\dbo.Table_Catch.sql" />
     <Content Include="Scripts\dbo.Table_Ships.sql" />
