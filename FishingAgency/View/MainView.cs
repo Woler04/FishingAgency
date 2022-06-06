@@ -132,5 +132,33 @@ namespace FishingAgency.View
                 addCatch.Show();
             }
         }
+
+        private void btnUpdateCatch_Click(object sender, EventArgs e)
+        {
+            if (UpdateCatchView.instance == null)
+            {
+                Catch ctch;
+                if (dgvFishingAgency.CurrentRow != null)
+                {
+                    try
+                    {
+                        ctch = (Catch)dgvFishingAgency.CurrentRow.DataBoundItem;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Please select row from \"Catch\" table");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select row from \"Catch\" table");
+                    return;
+                }
+
+                UpdateCatchView updateCatch = new UpdateCatchView(ctch);
+                updateCatch.Show();
+            }
+        }
     }
 }

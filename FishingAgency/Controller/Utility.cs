@@ -54,5 +54,10 @@ namespace FishingAgency.Controller
             to.Show();
             from.Hide();
         }
+
+        public static void Error16()
+        {
+            MessageBox.Show("Something went wrong 😪");
+        }
     }
 }
