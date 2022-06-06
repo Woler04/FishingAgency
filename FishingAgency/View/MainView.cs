@@ -1,4 +1,5 @@
 ﻿using FishingAgency.Controller;
+using FishingAgency.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,11 +33,6 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Users");
 
             dgvFishingAgency.Columns["Name"].Width = 200;
-            /*if(dgvFishingAgency.Columns.Contains("ShipName"))
-            { 
-                dgvFishingAgency.Columns.Remove("ShipName");
-            }
-            */
         }
 
         ///trqq da si pecahtaneto
@@ -58,18 +54,37 @@ namespace FishingAgency.View
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
-                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id-1).ToString();
+                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id - 1).ToString();
             }
         }
 
         private void btnShowCatchses_Click(object sender, EventArgs e)
         {
-            dgvFishingAgency.DataSource = controller.GetUsers();
+            ResetColumns();
+            dgvFishingAgency.DataSource = controller.GetCatches();
+
+            dgvFishingAgency.Columns.Remove("Id");
+            dgvFishingAgency.Columns.Remove("ShipId");
+            dgvFishingAgency.Columns.Remove("FishingShip");
+
+            dgvFishingAgency.Columns.Add("ShipName", "Ship");
+
+            for (int i = 0; i < dgvFishingAgency.RowCount; i++)
+            {
+                dgvFishingAgency.Rows[i].Cells[3].Value = controller.GetShipNameByCatch((Catch)dgvFishingAgency.Rows[i].DataBoundItem);
+            }
         }
 
         private void ResetColumns()
         {
             dgvFishingAgency.DataSource = null;
+            if (dgvFishingAgency.ColumnCount > 0)
+            {
+                for (int i = 0; i <= dgvFishingAgency.ColumnCount; i++)
+                {
+                    dgvFishingAgency.Columns.RemoveAt(i);
+                }
+            }  
         }
 
         //CRUD BUTTONS

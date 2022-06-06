@@ -42,5 +42,12 @@ namespace FishingAgency.Controller
                 return fadb.Users.ToList().ElementAt(id).FishingShip.Name;
             }
         }
+        public string GetShipNameByCatch(Catch catc)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.FishingShips.Where(s => s.Id == catc.ShipId).FirstOrDefault().Name;
+            }
+        }
     }
 }
