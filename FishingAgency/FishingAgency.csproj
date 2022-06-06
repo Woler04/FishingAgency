@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Controller\AddCatchController.cs" />
     <Compile Include="Controller\AddShipController.cs" />
+    <Compile Include="Controller\DeleteCatchController.cs" />
     <Compile Include="Controller\DeleteShipController.cs" />
     <Compile Include="Controller\FishingAgencyController.cs" />
     <Compile Include="Controller\RegistrationController.cs" />

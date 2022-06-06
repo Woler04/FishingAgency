@@ -49,5 +49,13 @@ namespace FishingAgency.Controller
                 return fadb.FishingShips.Where(s => s.Id == catc.ShipId).FirstOrDefault().Name;
             }
         }
+
+        public int GetCatchCountByShip(FishingShip ship)
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.FishingShips.Where(s => s.Id == ship.Id).FirstOrDefault().Catches.Count;
+            }
+        }
     }
 }

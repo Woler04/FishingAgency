@@ -33,6 +33,13 @@ namespace FishingAgency.View
             dgvFishingAgency.Columns.Remove("Users");
 
             dgvFishingAgency.Columns["Name"].Width = 200;
+
+            dgvFishingAgency.Columns.Add("CatchCount", "Catch Count");
+
+            for (int i = 0; i < dgvFishingAgency.RowCount; i++)
+            {
+                dgvFishingAgency.Rows[i].Cells[4].Value = controller.GetCatchCountByShip((FishingShip)dgvFishingAgency.Rows[i].DataBoundItem); ;
+            }
         }
 
         ///trqq da si pecahtaneto
@@ -159,6 +166,35 @@ namespace FishingAgency.View
                 UpdateCatchView updateCatch = new UpdateCatchView(ctch);
                 updateCatch.Show();
             }
+        }
+
+        private void btnDeleteCatch_Click(object sender, EventArgs e)
+        {
+            Catch ctch;
+            if (dgvFishingAgency.CurrentRow != null)
+            {
+                try
+                {
+                    ctch = (Catch)dgvFishingAgency.CurrentRow.DataBoundItem;
+                }
+                catch
+                {
+                    MessageBox.Show("Please select row from \"Catch\" table");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select row from \"Catch\" table");
+                return;
+            }
+
+            var res = MessageBox.Show($"Are you sure?", "Delete Catch?", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                DeleteCatchController.DeleteCatch(ctch);
+            }
+
         }
     }
 }

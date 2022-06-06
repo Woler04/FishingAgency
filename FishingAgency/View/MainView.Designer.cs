@@ -41,6 +41,7 @@
             this.btnUpdateUser = new System.Windows.Forms.Button();
             this.btnShowCatches = new System.Windows.Forms.Button();
             this.btnUpdateCatch = new System.Windows.Forms.Button();
+            this.btnDeleteCatch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,11 +168,22 @@
             this.btnUpdateCatch.UseVisualStyleBackColor = true;
             this.btnUpdateCatch.Click += new System.EventHandler(this.btnUpdateCatch_Click);
             // 
+            // btnDeleteCatch
+            // 
+            this.btnDeleteCatch.Location = new System.Drawing.Point(762, 233);
+            this.btnDeleteCatch.Name = "btnDeleteCatch";
+            this.btnDeleteCatch.Size = new System.Drawing.Size(106, 39);
+            this.btnDeleteCatch.TabIndex = 13;
+            this.btnDeleteCatch.Text = "Delete Catch";
+            this.btnDeleteCatch.UseVisualStyleBackColor = true;
+            this.btnDeleteCatch.Click += new System.EventHandler(this.btnDeleteCatch_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.btnDeleteCatch);
             this.Controls.Add(this.btnUpdateCatch);
             this.Controls.Add(this.btnShowCatches);
             this.Controls.Add(this.btnUpdateUser);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.Button btnUpdateUser;
         private System.Windows.Forms.Button btnShowCatches;
         private System.Windows.Forms.Button btnUpdateCatch;
+        private System.Windows.Forms.Button btnDeleteCatch;
     }
 }
