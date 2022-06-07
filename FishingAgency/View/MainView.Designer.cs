@@ -39,6 +39,7 @@
             this.btnDeleteShip = new System.Windows.Forms.Button();
             this.btnUpdateShip = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnLicense = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +145,22 @@
             this.btnUpdateUser.UseVisualStyleBackColor = true;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
+            // btnLicense
+            // 
+            this.btnLicense.Location = new System.Drawing.Point(884, 125);
+            this.btnLicense.Name = "btnLicense";
+            this.btnLicense.Size = new System.Drawing.Size(105, 38);
+            this.btnLicense.TabIndex = 11;
+            this.btnLicense.Text = "Show License";
+            this.btnLicense.UseVisualStyleBackColor = true;
+            this.btnLicense.Click += new System.EventHandler(this.btnLicense_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.btnLicense);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnUpdateShip);
             this.Controls.Add(this.btnDeleteShip);
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Button btnDeleteShip;
         private System.Windows.Forms.Button btnUpdateShip;
         private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnLicense;
     }
 }

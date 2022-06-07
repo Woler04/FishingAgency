@@ -12,7 +12,7 @@ namespace FishingAgency.Controller
     {
         public bool UpdateUser(User newUser, string oldPassword)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 User userToUpdate = fadb.Users.Where(u => u.Password == oldPassword && u.Name == newUser.Name).FirstOrDefault();
 

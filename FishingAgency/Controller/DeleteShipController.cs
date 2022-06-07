@@ -12,7 +12,7 @@ namespace FishingAgency.Controller
     {
         public void DeleteShip(string shipName)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 FishingShip shipToDelete = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault();
                 if (shipToDelete.Users.ToList() == null)
