@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FishingAgency.View;
 
 namespace FishingAgency.View
 {
@@ -92,5 +93,9 @@ namespace FishingAgency.View
             }
         }
 
+        private void btnLicense_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace FishingAgency.Controller
     {
         public List<FishingShip> GetFishingShips()
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 return fadb.FishingShips.ToList();
             }
@@ -21,7 +21,7 @@ namespace FishingAgency.Controller
 
         public List<User> GetUsers()
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 return fadb.Users.ToList();
             }
@@ -29,9 +29,17 @@ namespace FishingAgency.Controller
 
         public FishingShip GetShip(int id)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 return fadb.Users.ToList().ElementAt(id).FishingShip;
+            }
+        }
+
+        public List<FishingShip> GetShipLicense()
+        {
+            using (FishingAgencyEntities2 enteties = new FishingAgencyEntities2())
+            {
+                return enteties.FishingShips.Where(a => a.LicenseExpiration.Month == DateTime.Now.Month + 1).ToList();
             }
         }
     }

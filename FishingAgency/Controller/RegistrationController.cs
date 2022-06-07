@@ -1,11 +1,11 @@
-﻿using FishingAgency.Model;
-using FishingAgency.View;
+﻿using FishingAgency.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FishingAgency.Model;
 
 namespace FishingAgency.Controller
 {
@@ -14,7 +14,7 @@ namespace FishingAgency.Controller
         public bool Login(string username, string password)
         {
             //add more validations
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 //success
                 try
@@ -47,7 +47,7 @@ namespace FishingAgency.Controller
         public bool Register(string fullName, string username, string password, string shipName)
         {
             //add more validations
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 FishingShip shipToCheck = fadb.FishingShips.Where(s => s.Name == shipName).FirstOrDefault();
                 if (shipToCheck == null)
@@ -85,7 +85,7 @@ namespace FishingAgency.Controller
 
         public void NewPassord(string username, string newPassword, Form formToClose)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 User userToUpdate = fadb.Users.Where(u => u.Username == username).FirstOrDefault();
                 if (userToUpdate != null)

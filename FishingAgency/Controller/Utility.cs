@@ -33,7 +33,7 @@ namespace FishingAgency.Controller
 
         public static bool ValidateUsername(string usernameToAdd)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 foreach (User user in fadb.Users.ToList())
                 {

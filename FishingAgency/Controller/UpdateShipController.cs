@@ -11,7 +11,7 @@ namespace FishingAgency.Controller
     {
         public void UpdateShip(FishingShip ship, string oldName)
         {
-            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            using (FishingAgencyEntities2 fadb = new FishingAgencyEntities2())
             {
                 FishingShip shipToUpdate = fadb.FishingShips.Where(s => s.Name == oldName).FirstOrDefault();
 
