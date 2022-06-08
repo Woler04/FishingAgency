@@ -31,19 +31,25 @@ namespace FishingAgency.View
         public MainView()
         {
             myTimer = new Timer();
-            myTimer.Interval = 1;
             myTimer.Tick += new EventHandler(TimerEventProcessor);
+            myTimer.Interval = 1;
             myTimer.Start();
+            dgvState = DgvState.Users;
             InitializeComponent();
             controller = new FishingAgencyController();
             txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
+            dgvFishingAgency.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFishingAgency.MultiSelect = false;
         }
 
         private void btnShowShips_Click(object sender, EventArgs e)
-        {
-            dgvState = DgvState.Ships;
+        { 
             ResetColumns();
+            dgvState = DgvState.Ships;
+            myTimer.Start();
+
             dgvFishingAgency.DataSource = controller.GetFishingShips();
+            dgvFishingAgency.CurrentCell = null;
 
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("Catches");
@@ -62,9 +68,12 @@ namespace FishingAgency.View
         ///trqq da si pecahtaneto
         private void btnShowUsers_Click(object sender, EventArgs e)
         {
-            dgvState = DgvState.Users;
             ResetColumns();
+            dgvState = DgvState.Users;
+            myTimer.Start();
+
             dgvFishingAgency.DataSource = controller.GetUsers();
+            dgvFishingAgency.CurrentCell = null;
 
             dgvFishingAgency.Columns.Remove("Id");
             dgvFishingAgency.Columns.Remove("FishingShip");
@@ -80,13 +89,19 @@ namespace FishingAgency.View
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
                 dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id - 1).ToString();
+                if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
+                {
+                    dgvFishingAgency.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
+                    dgvFishingAgency.Rows[i].DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+                }
             }
         }
 
         private void btnShowCatchses_Click(object sender, EventArgs e)
         {
-            dgvState = DgvState.Catches;
             ResetColumns();
+            dgvState = DgvState.Catches;
+
             dgvFishingAgency.DataSource = controller.GetCatches();
 
             dgvFishingAgency.Columns.Remove("Id");
@@ -104,6 +119,8 @@ namespace FishingAgency.View
         private void ResetColumns()
         {
             dgvFishingAgency.DataSource = null;
+            dgvFishingAgency.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFishingAgency.MultiSelect = false;
             if (dgvFishingAgency.ColumnCount > 0)
             {
                 for (int i = 0; i <= dgvFishingAgency.ColumnCount; i++)
@@ -223,28 +240,68 @@ namespace FishingAgency.View
                 case DgvState.Query1:
                     //TBA
                     break;
+
                 case DgvState.Query2:
-                    //TBA
+                    btnLeaderboard_Click(null, null);
+                    dgvFishingAgency.CurrentCell = null;
                     break;
+
                 case DgvState.Query3:
                     //TBA
                     break;
+
                 case DgvState.Query4:
                     //TBA
                     break;
+
                 case DgvState.Users:
                     btnShowUsers_Click(null, null);
+                    dgvFishingAgency.CurrentCell = null;
                     break;
+
                 case DgvState.Ships:
                     btnShowShips_Click(null, null);
+                    dgvFishingAgency.CurrentCell = null;
                     break;
+
                 case DgvState.Catches:
                     btnShowCatchses_Click(null, null);
+                    myTimer.Stop();
                     break;
+
                 default:
-                    MessageBox.Show(":/");
+                    Utility.Error16();
                     break;
             }
+        }
+
+        //Queries
+        private void btnLeaderboard_Click(object sender, EventArgs e)
+        {
+            ResetColumns();
+            dgvState = DgvState.Query2;
+            myTimer.Start();
+
+            dgvFishingAgency.DataSource = controller.GetHobbyLeaderBoard().ToList();
+
+            dgvFishingAgency.Columns[0].Name = "Name";
+            dgvFishingAgency.Columns[1].Name = "Amount Catched";
+            for (int i = 0; i < dgvFishingAgency.RowCount; i++)
+            {
+                if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
+                {
+                    dgvFishingAgency.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
+                    dgvFishingAgency.Rows[i].DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+                }
+            }
+
+            dgvFishingAgency.CurrentCell = null;
+        }
+
+        private void btnShipLeaderboard_Click(object sender, EventArgs e)
+        {
+            //testing purpeses
+            MessageBox.Show(dgvState.ToString());
         }
     }
 }

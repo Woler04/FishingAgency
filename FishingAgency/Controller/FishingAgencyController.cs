@@ -57,5 +57,23 @@ namespace FishingAgency.Controller
                 return fadb.FishingShips.Where(s => s.Id == ship.Id).FirstOrDefault().Catches.Count;
             }
         }
+
+        public Dictionary<string, double> GetHobbyLeaderBoard()
+        {
+            Dictionary<string, double> shipsAndCatch = new Dictionary<string, double>();
+            List<User> forHobby = new List<User>();
+
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                forHobby = fadb.Users.Where(u => u.FishingShip.isForHobby == true).ToList();
+                foreach (var user in forHobby)
+                {
+                    double amountSum = 0;
+                    user.FishingShip.Catches.ToList().ForEach(c => amountSum += c.Amount);
+                    shipsAndCatch.Add(user.Name,amountSum);
+                }
+            }
+            return shipsAndCatch;
+        }
     }
 }
