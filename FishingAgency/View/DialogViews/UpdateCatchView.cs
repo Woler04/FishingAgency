@@ -16,7 +16,6 @@ namespace FishingAgency.View
     {
         UpdateCatchControler updateCatchController;
         public static UpdateCatchView instance = null;
-        private Catch catchTUPD;
 
         public UpdateCatchView(Catch catchTUPD)
         {
@@ -63,7 +62,7 @@ namespace FishingAgency.View
                 catchToUpdate.FishingShip = shipToCheck;
             }
 
-            updateCatchController.UpdateCatch(catchToUpdate, txtName.Text, catchTUPD);
+            updateCatchController.UpdateCatch(catchToUpdate, txtName.Text);
             instance = null;
             this.Close();
         }
