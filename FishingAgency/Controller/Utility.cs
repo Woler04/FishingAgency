@@ -11,7 +11,6 @@ namespace FishingAgency.Controller
     public static class Utility
     {
         static private User logedUser;
-
         public static User LoggedUser
         {
             get => logedUser;

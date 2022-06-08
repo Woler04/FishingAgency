@@ -14,10 +14,26 @@ namespace FishingAgency.View
 {
     public partial class MainView : Form
     {
+        private Timer myTimer;
         private FishingAgencyController controller;
+        private DgvState dgvState;
+        private enum DgvState
+        {
+            Query1,
+            Query2,
+            Query3,
+            Query4,
+            Users,
+            Ships,
+            Catches
+        };
 
         public MainView()
         {
+            myTimer = new Timer();
+            myTimer.Interval = 1;
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
+            myTimer.Start();
             InitializeComponent();
             controller = new FishingAgencyController();
             txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
@@ -25,6 +41,7 @@ namespace FishingAgency.View
 
         private void btnShowShips_Click(object sender, EventArgs e)
         {
+            dgvState = DgvState.Ships;
             ResetColumns();
             dgvFishingAgency.DataSource = controller.GetFishingShips();
 
@@ -45,6 +62,7 @@ namespace FishingAgency.View
         ///trqq da si pecahtaneto
         private void btnShowUsers_Click(object sender, EventArgs e)
         {
+            dgvState = DgvState.Users;
             ResetColumns();
             dgvFishingAgency.DataSource = controller.GetUsers();
 
@@ -67,6 +85,7 @@ namespace FishingAgency.View
 
         private void btnShowCatchses_Click(object sender, EventArgs e)
         {
+            dgvState = DgvState.Catches;
             ResetColumns();
             dgvFishingAgency.DataSource = controller.GetCatches();
 
@@ -91,7 +110,7 @@ namespace FishingAgency.View
                 {
                     dgvFishingAgency.Columns.RemoveAt(i);
                 }
-            }  
+            }
         }
 
         //CRUD BUTTONS
@@ -194,7 +213,38 @@ namespace FishingAgency.View
             {
                 DeleteCatchController.DeleteCatch(ctch);
             }
+        }
 
+        private void TimerEventProcessor(Object myObject,
+                                            EventArgs myEventArgs)
+        {
+            switch (dgvState)
+            {
+                case DgvState.Query1:
+                    //TBA
+                    break;
+                case DgvState.Query2:
+                    //TBA
+                    break;
+                case DgvState.Query3:
+                    //TBA
+                    break;
+                case DgvState.Query4:
+                    //TBA
+                    break;
+                case DgvState.Users:
+                    btnShowUsers_Click(null, null);
+                    break;
+                case DgvState.Ships:
+                    btnShowShips_Click(null, null);
+                    break;
+                case DgvState.Catches:
+                    btnShowCatchses_Click(null, null);
+                    break;
+                default:
+                    MessageBox.Show(":/");
+                    break;
+            }
         }
     }
 }
