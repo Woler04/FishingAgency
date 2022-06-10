@@ -43,7 +43,7 @@ namespace FishingAgency.View
         }
 
         private void btnShowShips_Click(object sender, EventArgs e)
-        { 
+        {
             ResetColumns();
             dgvState = DgvState.Ships;
             myTimer.Start();
@@ -121,13 +121,8 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = null;
             dgvFishingAgency.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgvFishingAgency.MultiSelect = false;
-            if (dgvFishingAgency.ColumnCount > 0)
-            {
-                for (int i = 0; i <= dgvFishingAgency.ColumnCount; i++)
-                {
-                    dgvFishingAgency.Columns.RemoveAt(i);
-                }
-            }
+            dgvFishingAgency.Rows.Clear();
+            dgvFishingAgency.Columns.Clear();
         }
 
         //CRUD BUTTONS
@@ -247,7 +242,8 @@ namespace FishingAgency.View
                     break;
 
                 case DgvState.Query3:
-                    //TBA
+                    btnShipLeaderboard_Click(null, null);
+                    dgvFishingAgency.CurrentCell = null;
                     break;
 
                 case DgvState.Query4:
@@ -283,6 +279,7 @@ namespace FishingAgency.View
             myTimer.Start();
 
             dgvFishingAgency.DataSource = controller.GetHobbyLeaderBoard().ToList();
+            dgvFishingAgency.CurrentCell = null;
 
             dgvFishingAgency.Columns[0].Name = "Name";
             dgvFishingAgency.Columns[1].Name = "Amount Catched";
@@ -300,7 +297,50 @@ namespace FishingAgency.View
 
         private void btnShipLeaderboard_Click(object sender, EventArgs e)
         {
-            //
+            ResetColumns();
+
+            dgvState = DgvState.Query3;
+            myTimer.Start();
+
+            List<FishingShip> fishingShip = controller.GetFishingShipsWithCatches();
+            dgvFishingAgency.DataSource = fishingShip;
+            dgvFishingAgency.CurrentCell = null;
+
+            dgvFishingAgency.Columns.Remove("Id");
+            dgvFishingAgency.Columns.Remove("Catches");
+            dgvFishingAgency.Columns.Remove("Users");
+            dgvFishingAgency.Columns.Remove("LicenseExpiration");
+            dgvFishingAgency.Columns.Remove("isForHobby");
+            dgvFishingAgency.Columns.Remove("FuelUsage");
+
+            dgvFishingAgency.Columns.Add("CatchLenght", "Lenght - min avr max");
+            dgvFishingAgency.Columns.Add("CatchAmount", "Amount - min avr max");
+            dgvFishingAgency.Columns.Add("CatchCount", DateTime.Today.Year.ToString()+" Catches");
+            dgvFishingAgency.Columns.Add("AmountFish", DateTime.Today.Year.ToString() + " Amount Fish");
+
+            dgvFishingAgency.Columns["Name"].Width = 150;
+            dgvFishingAgency.Columns["CatchLenght"].Width = 175;
+            dgvFishingAgency.Columns["CatchAmount"].Width = 175;
+
+            //dgvFishingAgency.Columns.Add("CatchAmount", "Min/Avrg/Max Amount");
+
+            for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+            {
+                // CA4 AMOUNT - min avr max
+                dgvFishingAgency.Rows[i].Cells["CatchLenght"].Value = controller.CatchMinAvrMaxLenght(fishingShip[i]);
+                // CA4 LENGHT - min avr max 
+                dgvFishingAgency.Rows[i].Cells["CatchAmount"].Value = controller.CatchMinAvrMaxAmaunt(fishingShip[i]);
+                // THIS YEAR CATCHES COUNT
+                dgvFishingAgency.Rows[i].Cells["CatchCount"].Value = controller.CatchesThisYear(fishingShip[i]);
+                // THIS YEAR CATCHES AOUMNT
+                dgvFishingAgency.Rows[i].Cells["AmountFish"].Value = controller.AmountThisYear(fishingShip[i]);
+
+
+            }
+
+            // THIS YEAR CATCHES COUNT
+            // THIS YEAR CATCHES AOUMNT
+
         }
     }
 }

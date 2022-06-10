@@ -18,6 +18,13 @@ namespace FishingAgency.Controller
                 return fadb.FishingShips.ToList();
             }
         }
+        public List<FishingShip> GetFishingShipsWithCatches()
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.FishingShips.Where(s => s.Catches.Count > 0).ToList();
+            }
+        }
 
         public List<User> GetUsers()
         {
@@ -58,7 +65,7 @@ namespace FishingAgency.Controller
             }
         }
 
-        public IOrderedEnumerable<KeyValuePair<string,double>> GetHobbyLeaderBoard()
+        public IOrderedEnumerable<KeyValuePair<string, double>> GetHobbyLeaderBoard()
         {
             SortedDictionary<string, double> shipsAndCatch = new SortedDictionary<string, double>();
             List<User> forHobby = new List<User>();
@@ -76,14 +83,96 @@ namespace FishingAgency.Controller
                     //}
                     //else 
                     //{
-                        shipsAndCatch.Add(user.Name, amountSum);
+                    shipsAndCatch.Add(user.Name, amountSum);
                     //}
-                    
+
                 }
             }
 
             var sortedDict = from entry in shipsAndCatch orderby entry.Value descending select entry;
             return sortedDict;
+        }
+
+        public string CatchMinAvrMaxLenght(FishingShip currship)
+        {
+            StringBuilder sb = new StringBuilder();
+            double min = 0;
+            double avr = 0;
+            double max = 0;
+
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
+                min = ship.Catches.Min(c => c.Lenght);
+                avr = 0;
+                foreach (var ca4 in ship.Catches)
+                {
+                    avr += ca4.Lenght;
+                }
+
+                avr /= ship.Catches.Count;
+                max = ship.Catches.Max(c => c.Lenght);
+            }
+
+            sb.Append(Math.Round(min, 2) + "/");
+            sb.Append(Math.Round(avr, 2));
+            sb.Append("/" + Math.Round(max, 2));
+            return sb.ToString();
+        }
+
+        public string CatchMinAvrMaxAmaunt(FishingShip currship)
+        {
+            StringBuilder sb = new StringBuilder();
+            double min = 0;
+            double avr = 0;
+            double max = 0;
+
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
+                min = ship.Catches.Min(c => c.Amount);
+                avr = 0;
+                foreach (var ca4 in ship.Catches)
+                {
+                    avr += ca4.Amount;
+                }
+
+                avr /= ship.Catches.Count;
+                max = ship.Catches.Max(c => c.Amount);
+            }
+
+            sb.Append(Math.Round(min,2) + "/");
+            sb.Append(Math.Round(avr,2));
+            sb.Append("/" + Math.Round(max,2));
+            return sb.ToString();
+        }
+
+        public string CatchesThisYear(FishingShip currship)
+        {
+            int res = 0;
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
+                {
+                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res ++);
+                }
+            }
+
+            return res.ToString();
+        }
+
+        public string AmountThisYear(FishingShip currship)
+        {
+            double res = 0;
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
+                {
+                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res+=c.Amount);
+                }
+            }
+
+            return Math.Round(res,2).ToString();
         }
     }
 }
