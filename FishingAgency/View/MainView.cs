@@ -245,7 +245,6 @@ namespace FishingAgency.View
                     btnLeaderboard_Click(null, null);
                     dgvFishingAgency.CurrentCell = null;
                     break;
-
                 case DgvState.Query3:
                     //TBA
                     break;
