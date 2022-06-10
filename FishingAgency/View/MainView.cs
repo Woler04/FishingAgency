@@ -88,7 +88,7 @@ namespace FishingAgency.View
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
-                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id - 1).ToString();
+                dgvFishingAgency.Rows[i].Cells[1].Value = controller.GetShipsNames(controller.GetUsers()[i].Id).ToString();
                 if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
                 {
                     dgvFishingAgency.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
@@ -300,8 +300,7 @@ namespace FishingAgency.View
 
         private void btnShipLeaderboard_Click(object sender, EventArgs e)
         {
-            //testing purpeses
-            MessageBox.Show(dgvState.ToString());
+            //
         }
     }
 }

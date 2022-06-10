@@ -58,22 +58,32 @@ namespace FishingAgency.Controller
             }
         }
 
-        public Dictionary<string, double> GetHobbyLeaderBoard()
+        public IOrderedEnumerable<KeyValuePair<string,double>> GetHobbyLeaderBoard()
         {
-            Dictionary<string, double> shipsAndCatch = new Dictionary<string, double>();
+            SortedDictionary<string, double> shipsAndCatch = new SortedDictionary<string, double>();
             List<User> forHobby = new List<User>();
 
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                forHobby = fadb.Users.Where(u => u.FishingShip.isForHobby == true).ToList();
+                forHobby = fadb.Users.Where(u => u.FishingShip.isForHobby == true && u.FishingShip.Catches.Count > 0).ToList();
                 foreach (var user in forHobby)
                 {
                     double amountSum = 0;
                     user.FishingShip.Catches.ToList().ForEach(c => amountSum += c.Amount);
-                    shipsAndCatch.Add(user.Name,amountSum);
+                    //if (shipsAndCatch.ContainsKey(user.Name))
+                    //{
+                    //    shipsAndCatch[user.Name] += amountSum;
+                    //}
+                    //else 
+                    //{
+                        shipsAndCatch.Add(user.Name, amountSum);
+                    //}
+                    
                 }
             }
-            return shipsAndCatch;
+
+            var sortedDict = from entry in shipsAndCatch orderby entry.Value descending select entry;
+            return sortedDict;
         }
     }
 }

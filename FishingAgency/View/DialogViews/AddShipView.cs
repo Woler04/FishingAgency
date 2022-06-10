@@ -45,7 +45,8 @@ namespace FishingAgency.View
             {
                 Name = txtName.Text,
                 LicenseExpiration = dtpLicense.Value,
-                FuelUsage = (double)nudFuelConsumption.Value
+                FuelUsage = (double)nudFuelConsumption.Value,
+                isForHobby = cbIsHoby.Checked
             };
 
             addShipController.AddShip(shipToAdd);
