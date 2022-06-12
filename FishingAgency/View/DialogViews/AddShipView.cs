@@ -41,6 +41,16 @@ namespace FishingAgency.View
                 return;
             }
 
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip shipToCheck = fadb.FishingShips.Where(s => s.Name == txtName.Text).FirstOrDefault();
+                if (shipToCheck != null)
+                {
+                    var res = MessageBox.Show($"Already existing ship.", "No ship?");
+                    return;
+                }
+            }
+
             FishingShip shipToAdd = new FishingShip
             {
                 Name = txtName.Text,

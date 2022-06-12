@@ -130,6 +130,7 @@ namespace FishingAgency.View
         {
             if (AddShipView.instance == null)
             {
+                dgvState = DgvState.Ships;
                 AddShipView addShip = new AddShipView();
                 addShip.Show();
             }
@@ -139,6 +140,7 @@ namespace FishingAgency.View
         {
             if (DeleteShipView.instance == null)
             {
+                dgvState = DgvState.Ships;
                 DeleteShipView deleteShip = new DeleteShipView();
                 deleteShip.Show();
             }
@@ -148,6 +150,7 @@ namespace FishingAgency.View
         {
             if (UpdateShipView.instance == null)
             {
+                dgvState = DgvState.Ships;
                 UpdateShipView addShip = new UpdateShipView();
                 addShip.Show();
             }
@@ -157,6 +160,7 @@ namespace FishingAgency.View
         {
             if (UpdateUserView.instance == null)
             {
+                dgvState = DgvState.Users;
                 UpdateUserView updateUser = new UpdateUserView();
                 updateUser.Show();
             }
@@ -166,6 +170,7 @@ namespace FishingAgency.View
         {
             if (AddCatchView.instance == null)
             {
+                dgvState = DgvState.Ships;
                 AddCatchView addCatch = new AddCatchView();
                 addCatch.Show();
             }
@@ -224,6 +229,7 @@ namespace FishingAgency.View
             if (res == DialogResult.Yes)
             {
                 DeleteCatchController.DeleteCatch(ctch);
+                btnShowCatchses_Click(null, null);
             }
         }
 
@@ -247,7 +253,8 @@ namespace FishingAgency.View
                     break;
 
                 case DgvState.Query4:
-                    //TBA
+                    btnEnvPolution_Click(null, null);
+                    dgvFishingAgency.CurrentCell = null;
                     break;
 
                 case DgvState.Users:
@@ -315,7 +322,7 @@ namespace FishingAgency.View
 
             dgvFishingAgency.Columns.Add("CatchLenght", "Lenght - min avr max");
             dgvFishingAgency.Columns.Add("CatchAmount", "Amount - min avr max");
-            dgvFishingAgency.Columns.Add("CatchCount", DateTime.Today.Year.ToString()+" Catches");
+            dgvFishingAgency.Columns.Add("CatchCount", DateTime.Today.Year.ToString() + " Catches");
             dgvFishingAgency.Columns.Add("AmountFish", DateTime.Today.Year.ToString() + " Amount Fish");
 
             dgvFishingAgency.Columns["Name"].Width = 150;
@@ -337,10 +344,35 @@ namespace FishingAgency.View
 
 
             }
+        }
 
-            // THIS YEAR CATCHES COUNT
-            // THIS YEAR CATCHES AOUMNT
+        private void btnEnvPolution_Click(object sender, EventArgs e)
+        {
+            ResetColumns();
 
+            dgvState = DgvState.Query4;
+            myTimer.Start();
+
+            List<FishingShip> fishingShip = controller.GetFishingShipsWithLicense();
+            dgvFishingAgency.DataSource = fishingShip;
+            dgvFishingAgency.CurrentCell = null;
+
+            dgvFishingAgency.Columns.Remove("Id");
+            dgvFishingAgency.Columns.Remove("Catches");
+            dgvFishingAgency.Columns.Remove("Users");
+            dgvFishingAgency.Columns.Remove("LicenseExpiration");
+            dgvFishingAgency.Columns.Remove("isForHobby");
+            dgvFishingAgency.Columns.Remove("FuelUsage");
+
+            dgvFishingAgency.Columns.Add("CarbonPolution", "Environment Polution");
+
+            dgvFishingAgency.Columns["Name"].Width = 150;
+            dgvFishingAgency.Columns["CarbonPolution"].Width = 150;
+
+            for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+            {
+                dgvFishingAgency.Rows[i].Cells["CarbonPolution"].Value = controller.EnvPolution(fishingShip[i]);
+            }
         }
     }
 }

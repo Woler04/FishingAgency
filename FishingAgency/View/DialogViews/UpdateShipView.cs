@@ -34,7 +34,7 @@ namespace FishingAgency.View
 
         private void btnUpdateShip_Click(object sender, EventArgs e)
         {
-            if (Utility.Validate(txtNewName.Text) ||
+            if (Utility.Validate(txtName.Text) ||
             Utility.Validate(dtpLicense.Text) ||
             Utility.Validate(nudFuelConsumption.Value.ToString()))
             {
@@ -58,6 +58,10 @@ namespace FishingAgency.View
                 isForHobby = cbIsHoby.Checked,
                 FuelUsage = (double)nudFuelConsumption.Value
             };
+            if (String.IsNullOrEmpty(txtNewName.Text) || String.IsNullOrWhiteSpace(txtNewName.Text))
+            {
+                newShip.Name = txtName.Text;
+            }
 
             updateShipController.UpdateShip(newShip, txtName.Text);
             instance = null;

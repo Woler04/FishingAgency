@@ -209,6 +209,7 @@
             this.btnEnvPolution.TabIndex = 16;
             this.btnEnvPolution.Text = "Env. Polution Check";
             this.btnEnvPolution.UseVisualStyleBackColor = true;
+            this.btnEnvPolution.Click += new System.EventHandler(this.btnEnvPolution_Click);
             // 
             // MainView
             // 

@@ -26,6 +26,14 @@ namespace FishingAgency.Controller
             }
         }
 
+        public List<FishingShip> GetFishingShipsWithLicense()
+        {
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                return fadb.FishingShips.Where(s => s.LicenseExpiration >= DateTime.Today && s.Catches.Count > 0).ToList();
+            }
+        }
+
         public List<User> GetUsers()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
@@ -141,38 +149,62 @@ namespace FishingAgency.Controller
                 max = ship.Catches.Max(c => c.Amount);
             }
 
-            sb.Append(Math.Round(min,2) + "/");
-            sb.Append(Math.Round(avr,2));
-            sb.Append("/" + Math.Round(max,2));
+            sb.Append(Math.Round(min, 2) + "/");
+            sb.Append(Math.Round(avr, 2));
+            sb.Append("/" + Math.Round(max, 2));
             return sb.ToString();
         }
 
-        public string CatchesThisYear(FishingShip currship)
+        public int CatchesThisYear(FishingShip currship)
         {
             int res = 0;
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
                 {
-                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res ++);
+                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res++);
                 }
             }
 
-            return res.ToString();
+            return res;
         }
 
-        public string AmountThisYear(FishingShip currship)
+        public double AmountThisYear(FishingShip currship)
         {
             double res = 0;
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
                 {
-                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res+=c.Amount);
+                    ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c => res += c.Amount);
                 }
             }
 
-            return Math.Round(res,2).ToString();
+            return Math.Round(res, 2);
+        }
+
+        public double EnvPolution(FishingShip currship)
+        {
+            double envPolution = 0;
+            double yearAmount = 0;
+            double yearLenght = 0;
+
+
+            //CARBON OTPECHATYK = (FUEL * ALL IZLETI.CHASOVE) / ALL IZLETI.RIBOLOV
+
+            using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+            {
+                FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
+                ship.Catches.Where(c => c.StartDate >= DateTime.Today.AddYears(-1)).ToList().ForEach(c =>
+                {
+                    yearAmount += c.Amount;
+                    yearLenght += c.Lenght;
+                });
+
+            }
+
+            envPolution = (currship.FuelUsage * yearAmount) / yearLenght;
+            return envPolution;
         }
     }
 }
