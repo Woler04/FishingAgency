@@ -51,14 +51,18 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = controller.GetFishingShips();
             dgvFishingAgency.CurrentCell = null;
 
-            dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("Catches");
-            dgvFishingAgency.Columns.Remove("Users");
+            try
+            {
+                dgvFishingAgency.Columns.Remove("Id");
+                dgvFishingAgency.Columns.Remove("Catches");
+                dgvFishingAgency.Columns.Remove("Users");
 
-            dgvFishingAgency.Columns["Name"].Width = 200;
+                dgvFishingAgency.Columns["Name"].Width = 200;
 
-            dgvFishingAgency.Columns.Add("CatchCount", "Catch Count");
-
+                dgvFishingAgency.Columns.Add("CatchCount", "Catch Count");
+            }
+            catch (Exception) { }
+            
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
                 dgvFishingAgency.Rows[i].Cells[4].Value = controller.GetCatchCountByShip((FishingShip)dgvFishingAgency.Rows[i].DataBoundItem); ;
@@ -75,16 +79,20 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = controller.GetUsers();
             dgvFishingAgency.CurrentCell = null;
 
-            dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("FishingShip");
-            dgvFishingAgency.Columns.Remove("Password");
-            dgvFishingAgency.Columns.Remove("Username");
-            dgvFishingAgency.Columns.Remove("ShipId");
+            try
+            {
+                dgvFishingAgency.Columns.Remove("Id");
+                dgvFishingAgency.Columns.Remove("FishingShip");
+                dgvFishingAgency.Columns.Remove("Password");
+                dgvFishingAgency.Columns.Remove("Username");
+                dgvFishingAgency.Columns.Remove("ShipId");
 
-            dgvFishingAgency.Columns.Add("ShipName", "Current Ship");
+                dgvFishingAgency.Columns.Add("ShipName", "Current Ship");
 
-            dgvFishingAgency.Columns["Name"].Width = 200;
-            dgvFishingAgency.Columns["ShipName"].Width = 200;
+                dgvFishingAgency.Columns["Name"].Width = 200;
+                dgvFishingAgency.Columns["ShipName"].Width = 200;
+            }
+            catch (Exception) { }
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
@@ -104,11 +112,17 @@ namespace FishingAgency.View
 
             dgvFishingAgency.DataSource = controller.GetCatches();
 
-            dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("ShipId");
-            dgvFishingAgency.Columns.Remove("FishingShip");
+            try
+            {
+                dgvFishingAgency.Columns.Remove("Id");
+                dgvFishingAgency.Columns.Remove("ShipId");
+                dgvFishingAgency.Columns.Remove("FishingShip");
 
-            dgvFishingAgency.Columns.Add("ShipName", "Ship");
+                dgvFishingAgency.Columns.Add("ShipName", "Ship");
+            }
+            catch (Exception){ }
+
+            
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
