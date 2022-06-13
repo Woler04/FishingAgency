@@ -22,6 +22,10 @@ namespace FishingAgency.View
             {
                 InitializeComponent();
                 updateShipController = new UpdateShipController();
+                txtName.Text = Utility.LoggedShip.Name;
+                txtNewName.Text = Utility.LoggedShip.Name;
+                nudFuelConsumption.Value = decimal.Parse(Utility.LoggedShip.FuelUsage.ToString());
+                dtpLicense.Value = Utility.LoggedShip.LicenseExpiration;
                 instance = this;
             }
 
@@ -48,6 +52,21 @@ namespace FishingAgency.View
                 {
                     var res = MessageBox.Show($"Already existing ship.", "No ship?");
                     return;
+                }
+
+                if (Utility.LoggedUser.Username != "Admin")
+                {
+                    shipToCheck = fadb.FishingShips.Where(s => s.Name == txtName.Text).FirstOrDefault();
+                    if (shipToCheck == null)
+                    {
+                        var res = MessageBox.Show($"No such a ship.", "No ship?");
+                        return;
+                    }
+                    else if (Utility.LoggedShip.Name != shipToCheck.Name)
+                    {
+                        var res = MessageBox.Show($"Not your ship.", "No ship?");
+                        return;
+                    }
                 }
             }
 

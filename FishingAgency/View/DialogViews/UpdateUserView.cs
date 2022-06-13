@@ -24,6 +24,8 @@ namespace FishingAgency.View
                 updateUserControllerController = new UpdateUserController();
                 instance = this;
                 txtUsername.Text = Utility.LoggedUser.Username;
+                txtShip.Text = Utility.LoggedShip.Name;
+                txtNewPassword.Text = Utility.LoggedUser.Password;
             }
 
             this.FormClosed += new FormClosedEventHandler(FormClosed);

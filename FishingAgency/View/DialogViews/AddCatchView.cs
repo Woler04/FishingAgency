@@ -16,12 +16,14 @@ namespace FishingAgency.View
     {
         AddCatchController addCatchController;
         public static AddCatchView instance = null;
+
         public AddCatchView()
         {
             if (instance == null)
             {
                 InitializeComponent();
                 addCatchController = new AddCatchController();
+                txtShipName.Text = Utility.LoggedShip.Name;
                 instance = this;
             }
 

@@ -24,7 +24,6 @@ namespace FishingAgency.View
             {
                 InitializeComponent();
                 ca4Up = catchTUPD;
-                txtName.Text = catchTUPD.FishingShip.Name;
                 dtpStartingDate.Value = catchTUPD.StartDate;
                 updateCatchController = new UpdateCatchControler();
                 instance = this;

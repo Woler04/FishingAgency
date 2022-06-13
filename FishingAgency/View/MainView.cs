@@ -36,6 +36,14 @@ namespace FishingAgency.View
             myTimer.Start();
             dgvState = DgvState.Users;
             InitializeComponent();
+
+            if (Utility.LoggedUser.Username != "Admin")
+            {
+                btnUpdateShip.Location = btnAddShip.Location;
+                btnAddShip.Dispose();
+                btnDeleteShip.Dispose();
+            }
+
             controller = new FishingAgencyController();
             txtWelcome.Text = $"Welcome, {Utility.LoggedUser.Name}";
             dgvFishingAgency.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -62,7 +70,7 @@ namespace FishingAgency.View
                 dgvFishingAgency.Columns.Add("CatchCount", "Catch Count");
             }
             catch (Exception) { }
-            
+
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
                 dgvFishingAgency.Rows[i].Cells[4].Value = controller.GetCatchCountByShip((FishingShip)dgvFishingAgency.Rows[i].DataBoundItem); ;
@@ -120,9 +128,7 @@ namespace FishingAgency.View
 
                 dgvFishingAgency.Columns.Add("ShipName", "Ship");
             }
-            catch (Exception){ }
-
-            
+            catch (Exception) { }
 
             for (int i = 0; i < dgvFishingAgency.RowCount; i++)
             {
@@ -165,8 +171,8 @@ namespace FishingAgency.View
             if (UpdateShipView.instance == null)
             {
                 dgvState = DgvState.Ships;
-                UpdateShipView addShip = new UpdateShipView();
-                addShip.Show();
+                UpdateShipView updateShip = new UpdateShipView();
+                updateShip.Show();
             }
         }
 
@@ -302,16 +308,20 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = controller.GetHobbyLeaderBoard().ToList();
             dgvFishingAgency.CurrentCell = null;
 
-            dgvFishingAgency.Columns[0].Name = "Name";
-            dgvFishingAgency.Columns[1].Name = "Amount Catched";
-            for (int i = 0; i < dgvFishingAgency.RowCount; i++)
+            try
             {
-                if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
+                dgvFishingAgency.Columns[0].Name = "Name";
+                dgvFishingAgency.Columns[1].Name = "Amount Catched";
+                for (int i = 0; i < dgvFishingAgency.RowCount; i++)
                 {
-                    dgvFishingAgency.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
-                    dgvFishingAgency.Rows[i].DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+                    if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
+                    {
+                        dgvFishingAgency.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
+                        dgvFishingAgency.Rows[i].DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+                    }
                 }
             }
+            catch (Exception) { }
 
             dgvFishingAgency.CurrentCell = null;
         }
@@ -327,37 +337,39 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = fishingShip;
             dgvFishingAgency.CurrentCell = null;
 
-            dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("Catches");
-            dgvFishingAgency.Columns.Remove("Users");
-            dgvFishingAgency.Columns.Remove("LicenseExpiration");
-            dgvFishingAgency.Columns.Remove("isForHobby");
-            dgvFishingAgency.Columns.Remove("FuelUsage");
-
-            dgvFishingAgency.Columns.Add("CatchLenght", "Lenght - min avr max");
-            dgvFishingAgency.Columns.Add("CatchAmount", "Amount - min avr max");
-            dgvFishingAgency.Columns.Add("CatchCount", DateTime.Today.Year.ToString() + " Catches");
-            dgvFishingAgency.Columns.Add("AmountFish", DateTime.Today.Year.ToString() + " Amount Fish");
-
-            dgvFishingAgency.Columns["Name"].Width = 150;
-            dgvFishingAgency.Columns["CatchLenght"].Width = 175;
-            dgvFishingAgency.Columns["CatchAmount"].Width = 175;
-
-            //dgvFishingAgency.Columns.Add("CatchAmount", "Min/Avrg/Max Amount");
-
-            for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+            try
             {
-                // CA4 AMOUNT - min avr max
-                dgvFishingAgency.Rows[i].Cells["CatchLenght"].Value = controller.CatchMinAvrMaxLenght(fishingShip[i]);
-                // CA4 LENGHT - min avr max 
-                dgvFishingAgency.Rows[i].Cells["CatchAmount"].Value = controller.CatchMinAvrMaxAmaunt(fishingShip[i]);
-                // THIS YEAR CATCHES COUNT
-                dgvFishingAgency.Rows[i].Cells["CatchCount"].Value = controller.CatchesThisYear(fishingShip[i]);
-                // THIS YEAR CATCHES AOUMNT
-                dgvFishingAgency.Rows[i].Cells["AmountFish"].Value = controller.AmountThisYear(fishingShip[i]);
+                dgvFishingAgency.Columns.Remove("Id");
+                dgvFishingAgency.Columns.Remove("Catches");
+                dgvFishingAgency.Columns.Remove("Users");
+                dgvFishingAgency.Columns.Remove("LicenseExpiration");
+                dgvFishingAgency.Columns.Remove("isForHobby");
+                dgvFishingAgency.Columns.Remove("FuelUsage");
 
+                dgvFishingAgency.Columns.Add("CatchLenght", "Lenght - min avr max");
+                dgvFishingAgency.Columns.Add("CatchAmount", "Amount - min avr max");
+                dgvFishingAgency.Columns.Add("CatchCount", DateTime.Today.Year.ToString() + " Catches");
+                dgvFishingAgency.Columns.Add("AmountFish", DateTime.Today.Year.ToString() + " Amount Fish");
 
+                dgvFishingAgency.Columns["Name"].Width = 150;
+                dgvFishingAgency.Columns["CatchLenght"].Width = 175;
+                dgvFishingAgency.Columns["CatchAmount"].Width = 175;
+
+                //dgvFishingAgency.Columns.Add("CatchAmount", "Min/Avrg/Max Amount");
+
+                for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+                {
+                    // CA4 AMOUNT - min avr max
+                    dgvFishingAgency.Rows[i].Cells["CatchLenght"].Value = controller.CatchMinAvrMaxLenght(fishingShip[i]);
+                    // CA4 LENGHT - min avr max 
+                    dgvFishingAgency.Rows[i].Cells["CatchAmount"].Value = controller.CatchMinAvrMaxAmaunt(fishingShip[i]);
+                    // THIS YEAR CATCHES COUNT
+                    dgvFishingAgency.Rows[i].Cells["CatchCount"].Value = controller.CatchesThisYear(fishingShip[i]);
+                    // THIS YEAR CATCHES AOUMNT
+                    dgvFishingAgency.Rows[i].Cells["AmountFish"].Value = controller.AmountThisYear(fishingShip[i]);
+                }
             }
+            catch (Exception) { }
         }
 
         private void btnEnvPolution_Click(object sender, EventArgs e)
@@ -371,22 +383,26 @@ namespace FishingAgency.View
             dgvFishingAgency.DataSource = fishingShip;
             dgvFishingAgency.CurrentCell = null;
 
-            dgvFishingAgency.Columns.Remove("Id");
-            dgvFishingAgency.Columns.Remove("Catches");
-            dgvFishingAgency.Columns.Remove("Users");
-            dgvFishingAgency.Columns.Remove("LicenseExpiration");
-            dgvFishingAgency.Columns.Remove("isForHobby");
-            dgvFishingAgency.Columns.Remove("FuelUsage");
-
-            dgvFishingAgency.Columns.Add("CarbonPolution", "Environment Polution");
-
-            dgvFishingAgency.Columns["Name"].Width = 150;
-            dgvFishingAgency.Columns["CarbonPolution"].Width = 150;
-
-            for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+            try
             {
-                dgvFishingAgency.Rows[i].Cells["CarbonPolution"].Value = controller.EnvPolution(fishingShip[i]);
+                dgvFishingAgency.Columns.Remove("Id");
+                dgvFishingAgency.Columns.Remove("Catches");
+                dgvFishingAgency.Columns.Remove("Users");
+                dgvFishingAgency.Columns.Remove("LicenseExpiration");
+                dgvFishingAgency.Columns.Remove("isForHobby");
+                dgvFishingAgency.Columns.Remove("FuelUsage");
+
+                dgvFishingAgency.Columns.Add("CarbonPolution", "Environment Polution");
+
+                dgvFishingAgency.Columns["Name"].Width = 150;
+                dgvFishingAgency.Columns["CarbonPolution"].Width = 150;
+
+                for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
+                {
+                    dgvFishingAgency.Rows[i].Cells["CarbonPolution"].Value = controller.EnvPolution(fishingShip[i]);
+                }
             }
+            catch (Exception) { }
         }
     }
 }

@@ -15,14 +15,19 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.FishingShips.ToList();
+                List<FishingShip> ships = fadb.FishingShips.ToList();
+                ships.Remove(fadb.FishingShips.Where(s => s.Name == "admin").FirstOrDefault());
+                return ships;
             }
         }
         public List<FishingShip> GetFishingShipsWithCatches()
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.FishingShips.Where(s => s.Catches.Count > 0).ToList();
+                List<FishingShip> ships = fadb.FishingShips.ToList();
+                ships.Remove(fadb.FishingShips.Where(s => s.Name == "admin").FirstOrDefault());
+                ships.Where(s => s.Catches.Count > 0).ToList();
+                return ships;
             }
         }
 
@@ -30,7 +35,10 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.FishingShips.Where(s => s.LicenseExpiration >= DateTime.Today && s.Catches.Count > 0).ToList();
+                List<FishingShip> ships = fadb.FishingShips.ToList();
+                ships.Remove(fadb.FishingShips.Where(s => s.Name == "admin").FirstOrDefault());
+                ships.Where(s => s.LicenseExpiration >= DateTime.Today && s.Catches.Count > 0).ToList();
+                return ships;
             }
         }
 
@@ -38,7 +46,9 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.Users.ToList();
+                List<User> users = fadb.Users.ToList();
+                users.Remove(fadb.Users.Where(u => u.Username == "admin").FirstOrDefault());
+                return users;
             }
         }
 
@@ -54,7 +64,9 @@ namespace FishingAgency.Controller
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
-                return fadb.Users.ToList().ElementAt(id).FishingShip.Name;
+                List<User> users = fadb.Users.ToList();
+                users.Remove(fadb.Users.Where(u => u.Username == "admin").FirstOrDefault());
+                return users.ElementAt(id-1).FishingShip.Name;
             }
         }
         public string GetShipNameByCatch(Catch catc)
