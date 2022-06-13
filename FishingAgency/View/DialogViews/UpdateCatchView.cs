@@ -16,12 +16,14 @@ namespace FishingAgency.View
     {
         UpdateCatchControler updateCatchController;
         public static UpdateCatchView instance = null;
+        private Catch ca4Up;
 
         public UpdateCatchView(Catch catchTUPD)
         {
             if (instance == null)
             {
                 InitializeComponent();
+                ca4Up = catchTUPD;
                 dtpStartingDate.Value = catchTUPD.StartDate;
                 updateCatchController = new UpdateCatchControler();
                 instance = this;
@@ -59,6 +61,7 @@ namespace FishingAgency.View
                     var res = MessageBox.Show($"There is not such ship.", "No ship?");
                     return;
                 }
+                catchToUpdate.Id = ca4Up.Id;
                 catchToUpdate.FishingShip = shipToCheck;
             }
 

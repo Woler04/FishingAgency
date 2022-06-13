@@ -42,6 +42,9 @@
             this.btnShowCatches = new System.Windows.Forms.Button();
             this.btnUpdateCatch = new System.Windows.Forms.Button();
             this.btnDeleteCatch = new System.Windows.Forms.Button();
+            this.btnLeaderboard = new System.Windows.Forms.Button();
+            this.btnShipLeaderboard = new System.Windows.Forms.Button();
+            this.btnEnvPolution = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,11 +181,44 @@
             this.btnDeleteCatch.UseVisualStyleBackColor = true;
             this.btnDeleteCatch.Click += new System.EventHandler(this.btnDeleteCatch_Click);
             // 
+            // btnLeaderboard
+            // 
+            this.btnLeaderboard.Location = new System.Drawing.Point(763, 366);
+            this.btnLeaderboard.Name = "btnLeaderboard";
+            this.btnLeaderboard.Size = new System.Drawing.Size(227, 23);
+            this.btnLeaderboard.TabIndex = 14;
+            this.btnLeaderboard.Text = "Hobby Leaderboard";
+            this.btnLeaderboard.UseVisualStyleBackColor = true;
+            this.btnLeaderboard.Click += new System.EventHandler(this.btnLeaderboard_Click);
+            // 
+            // btnShipLeaderboard
+            // 
+            this.btnShipLeaderboard.Location = new System.Drawing.Point(762, 337);
+            this.btnShipLeaderboard.Name = "btnShipLeaderboard";
+            this.btnShipLeaderboard.Size = new System.Drawing.Size(227, 23);
+            this.btnShipLeaderboard.TabIndex = 15;
+            this.btnShipLeaderboard.Text = "Ships Leaderboard";
+            this.btnShipLeaderboard.UseVisualStyleBackColor = true;
+            this.btnShipLeaderboard.Click += new System.EventHandler(this.btnShipLeaderboard_Click);
+            // 
+            // btnEnvPolution
+            // 
+            this.btnEnvPolution.Location = new System.Drawing.Point(762, 308);
+            this.btnEnvPolution.Name = "btnEnvPolution";
+            this.btnEnvPolution.Size = new System.Drawing.Size(227, 23);
+            this.btnEnvPolution.TabIndex = 16;
+            this.btnEnvPolution.Text = "Env. Polution Check";
+            this.btnEnvPolution.UseVisualStyleBackColor = true;
+            this.btnEnvPolution.Click += new System.EventHandler(this.btnEnvPolution_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.btnEnvPolution);
+            this.Controls.Add(this.btnShipLeaderboard);
+            this.Controls.Add(this.btnLeaderboard);
             this.Controls.Add(this.btnDeleteCatch);
             this.Controls.Add(this.btnUpdateCatch);
             this.Controls.Add(this.btnShowCatches);
@@ -222,5 +258,8 @@
         private System.Windows.Forms.Button btnShowCatches;
         private System.Windows.Forms.Button btnUpdateCatch;
         private System.Windows.Forms.Button btnDeleteCatch;
+        private System.Windows.Forms.Button btnLeaderboard;
+        private System.Windows.Forms.Button btnShipLeaderboard;
+        private System.Windows.Forms.Button btnEnvPolution;
     }
 }

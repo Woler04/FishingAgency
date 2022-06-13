@@ -36,12 +36,16 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtOldPassword = new System.Windows.Forms.TextBox();
             this.lblOldPassword = new System.Windows.Forms.Label();
+            this.txtShip = new System.Windows.Forms.TextBox();
+            this.lblShip = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNewPassword
             // 
             this.txtNewPassword.Location = new System.Drawing.Point(15, 81);
             this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(200, 18);
             this.txtNewPassword.TabIndex = 19;
             // 
@@ -57,7 +61,7 @@
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(12, 183);
+            this.btnSaveChanges.Location = new System.Drawing.Point(15, 259);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(203, 23);
             this.btnSaveChanges.TabIndex = 17;
@@ -86,6 +90,7 @@
             // 
             this.txtOldPassword.Location = new System.Drawing.Point(15, 135);
             this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(200, 18);
             this.txtOldPassword.TabIndex = 21;
             // 
@@ -99,12 +104,41 @@
             this.lblOldPassword.TabIndex = 20;
             this.lblOldPassword.Text = "Old Password";
             // 
+            // txtShip
+            // 
+            this.txtShip.Location = new System.Drawing.Point(15, 220);
+            this.txtShip.Name = "txtShip";
+            this.txtShip.Size = new System.Drawing.Size(200, 18);
+            this.txtShip.TabIndex = 23;
+            // 
+            // lblShip
+            // 
+            this.lblShip.AutoSize = true;
+            this.lblShip.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShip.Location = new System.Drawing.Point(12, 201);
+            this.lblShip.Name = "lblShip";
+            this.lblShip.Size = new System.Drawing.Size(47, 16);
+            this.lblShip.TabIndex = 22;
+            this.lblShip.Text = "Ship";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 190);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 11);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "(if not sure check user data)";
+            // 
             // UpdateUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(236, 229);
+            this.ClientSize = new System.Drawing.Size(236, 294);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtShip);
+            this.Controls.Add(this.lblShip);
             this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.lblOldPassword);
             this.Controls.Add(this.txtNewPassword);
@@ -134,5 +168,8 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtOldPassword;
         private System.Windows.Forms.Label lblOldPassword;
+        private System.Windows.Forms.TextBox txtShip;
+        private System.Windows.Forms.Label lblShip;
+        private System.Windows.Forms.Label label1;
     }
 }

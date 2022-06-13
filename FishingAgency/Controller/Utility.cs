@@ -16,7 +16,17 @@ namespace FishingAgency.Controller
             get => logedUser;
             set => logedUser = value;
         }
-
+        public static FishingShip LoggedShip
+        {
+            get
+            {
+                using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+                {
+                    return fadb.Users.Where(u => u.Username == Utility.LoggedUser.Username)
+                        .ToList().FirstOrDefault().FishingShip;
+                }
+            }
+        }
         public static bool Validate(string textToValidate)
         {
             if (textToValidate.Length < 0 || String.IsNullOrWhiteSpace(textToValidate) || String.IsNullOrEmpty(textToValidate))

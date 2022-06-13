@@ -32,8 +32,8 @@ namespace FishingAgency.Controller
                     catchToAdd.Id = 1;
                 }
                 else
-                { 
-                catchToAdd.Id = fadb.Catches.ToList().LastOrDefault().Id + 1;
+                {
+                    catchToAdd.Id = fadb.Catches.ToList().LastOrDefault().Id + 1;
                 }
 
                 catchToAdd.ShipId = shipToCheck.Id;
