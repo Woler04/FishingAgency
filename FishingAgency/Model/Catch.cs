@@ -11,7 +11,7 @@ namespace FishingAgency.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Catch
     {
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace FishingAgency.Model
         public double Lenght { get; set; }
         public System.DateTime StartDate { get; set; }
         public int ShipId { get; set; }
-    
+
         public virtual FishingShip FishingShip { get; set; }
     }
 }

@@ -24,6 +24,8 @@ namespace FishingAgency.View
                 updateUserControllerController = new UpdateUserController();
                 instance = this;
                 txtUsername.Text = Utility.LoggedUser.Username;
+                txtShip.Text = Utility.LoggedShip.Name;
+                txtNewPassword.Text = Utility.LoggedUser.Password;
             }
 
             this.FormClosed += new FormClosedEventHandler(FormClosed);
@@ -35,6 +37,14 @@ namespace FishingAgency.View
 
         private void btnUpdateShip_Click(object sender, EventArgs e)
         {
+            if (Utility.Validate(txtNewPassword.Text) ||
+            Utility.Validate(txtOldPassword.Text) ||
+            Utility.Validate(txtShip.Text)||
+            Utility.Validate(txtUsername.Text))
+            {
+                return;
+            }
+
             User newUser = new User()
             {
                 Name = Utility.LoggedUser.Name,
@@ -48,7 +58,7 @@ namespace FishingAgency.View
                 return;
             }
 
-            if (updateUserControllerController.UpdateUser(newUser, txtOldPassword.Text))
+            if (updateUserControllerController.UpdateUser(newUser, txtOldPassword.Text, txtShip.Text))
             {
                 instance = null;
                 this.Close();

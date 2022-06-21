@@ -10,7 +10,7 @@ namespace FishingAgency.Controller
 {
     public class UpdateUserController
     {
-        public bool UpdateUser(User newUser, string oldPassword)
+        public bool UpdateUser(User newUser, string oldPassword, string shipName)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
@@ -27,7 +27,7 @@ namespace FishingAgency.Controller
                     userToUpdate.Name = newUser.Name;
                     userToUpdate.Username = newUser.Username;
                     userToUpdate.Password = newUser.Password;
-                    userToUpdate.ShipId = Utility.LoggedUser.ShipId;
+                    userToUpdate.ShipId = fadb.FishingShips.Where(s => s.Name == shipName).ToList().FirstOrDefault().Id;
                     fadb.SaveChanges();
                 }
                 else

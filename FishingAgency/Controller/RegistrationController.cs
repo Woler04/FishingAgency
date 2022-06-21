@@ -38,7 +38,7 @@ namespace FishingAgency.Controller
                 //login fail
                 catch
                 {
-                    MessageBox.Show($"Somehow you've messed u :/");
+                    Utility.Error16();
                     return false;
                 }
             }

@@ -39,6 +39,12 @@
             this.btnDeleteShip = new System.Windows.Forms.Button();
             this.btnUpdateShip = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnShowCatches = new System.Windows.Forms.Button();
+            this.btnUpdateCatch = new System.Windows.Forms.Button();
+            this.btnDeleteCatch = new System.Windows.Forms.Button();
+            this.btnLeaderboard = new System.Windows.Forms.Button();
+            this.btnShipLeaderboard = new System.Windows.Forms.Button();
+            this.btnEnvPolution = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFishingAgency)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +90,7 @@
             this.btnAddCatch.TabIndex = 4;
             this.btnAddCatch.Text = "Add Catch";
             this.btnAddCatch.UseVisualStyleBackColor = true;
+            this.btnAddCatch.Click += new System.EventHandler(this.btnAddCatch_Click);
             // 
             // btnShowShips
             // 
@@ -93,7 +100,7 @@
             this.btnShowShips.TabIndex = 5;
             this.btnShowShips.Text = "Show Ships";
             this.btnShowShips.UseVisualStyleBackColor = true;
-            this.btnShowShips.Click += new System.EventHandler(this.btnShowSomeData_Click);
+            this.btnShowShips.Click += new System.EventHandler(this.btnShowShips_Click);
             // 
             // btnShowUsers
             // 
@@ -103,7 +110,7 @@
             this.btnShowUsers.TabIndex = 6;
             this.btnShowUsers.Text = "Show Users";
             this.btnShowUsers.UseVisualStyleBackColor = true;
-            this.btnShowUsers.Click += new System.EventHandler(this.btnShowMoreData_Click);
+            this.btnShowUsers.Click += new System.EventHandler(this.btnShowUsers_Click);
             // 
             // txtWelcome
             // 
@@ -144,11 +151,77 @@
             this.btnUpdateUser.UseVisualStyleBackColor = true;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
+            // btnShowCatches
+            // 
+            this.btnShowCatches.Location = new System.Drawing.Point(762, 424);
+            this.btnShowCatches.Name = "btnShowCatches";
+            this.btnShowCatches.Size = new System.Drawing.Size(227, 23);
+            this.btnShowCatches.TabIndex = 11;
+            this.btnShowCatches.Text = "Show Catches";
+            this.btnShowCatches.UseVisualStyleBackColor = true;
+            this.btnShowCatches.Click += new System.EventHandler(this.btnShowCatchses_Click);
+            // 
+            // btnUpdateCatch
+            // 
+            this.btnUpdateCatch.Location = new System.Drawing.Point(884, 188);
+            this.btnUpdateCatch.Name = "btnUpdateCatch";
+            this.btnUpdateCatch.Size = new System.Drawing.Size(105, 39);
+            this.btnUpdateCatch.TabIndex = 12;
+            this.btnUpdateCatch.Text = "Update Catch";
+            this.btnUpdateCatch.UseVisualStyleBackColor = true;
+            this.btnUpdateCatch.Click += new System.EventHandler(this.btnUpdateCatch_Click);
+            // 
+            // btnDeleteCatch
+            // 
+            this.btnDeleteCatch.Location = new System.Drawing.Point(762, 233);
+            this.btnDeleteCatch.Name = "btnDeleteCatch";
+            this.btnDeleteCatch.Size = new System.Drawing.Size(106, 39);
+            this.btnDeleteCatch.TabIndex = 13;
+            this.btnDeleteCatch.Text = "Delete Catch";
+            this.btnDeleteCatch.UseVisualStyleBackColor = true;
+            this.btnDeleteCatch.Click += new System.EventHandler(this.btnDeleteCatch_Click);
+            // 
+            // btnLeaderboard
+            // 
+            this.btnLeaderboard.Location = new System.Drawing.Point(763, 366);
+            this.btnLeaderboard.Name = "btnLeaderboard";
+            this.btnLeaderboard.Size = new System.Drawing.Size(227, 23);
+            this.btnLeaderboard.TabIndex = 14;
+            this.btnLeaderboard.Text = "Hobby Leaderboard";
+            this.btnLeaderboard.UseVisualStyleBackColor = true;
+            this.btnLeaderboard.Click += new System.EventHandler(this.btnLeaderboard_Click);
+            // 
+            // btnShipLeaderboard
+            // 
+            this.btnShipLeaderboard.Location = new System.Drawing.Point(762, 337);
+            this.btnShipLeaderboard.Name = "btnShipLeaderboard";
+            this.btnShipLeaderboard.Size = new System.Drawing.Size(227, 23);
+            this.btnShipLeaderboard.TabIndex = 15;
+            this.btnShipLeaderboard.Text = "Ships Leaderboard";
+            this.btnShipLeaderboard.UseVisualStyleBackColor = true;
+            this.btnShipLeaderboard.Click += new System.EventHandler(this.btnShipLeaderboard_Click);
+            // 
+            // btnEnvPolution
+            // 
+            this.btnEnvPolution.Location = new System.Drawing.Point(762, 308);
+            this.btnEnvPolution.Name = "btnEnvPolution";
+            this.btnEnvPolution.Size = new System.Drawing.Size(227, 23);
+            this.btnEnvPolution.TabIndex = 16;
+            this.btnEnvPolution.Text = "Env. Polution Check";
+            this.btnEnvPolution.UseVisualStyleBackColor = true;
+            this.btnEnvPolution.Click += new System.EventHandler(this.btnEnvPolution_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 521);
+            this.Controls.Add(this.btnEnvPolution);
+            this.Controls.Add(this.btnShipLeaderboard);
+            this.Controls.Add(this.btnLeaderboard);
+            this.Controls.Add(this.btnDeleteCatch);
+            this.Controls.Add(this.btnUpdateCatch);
+            this.Controls.Add(this.btnShowCatches);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnUpdateShip);
             this.Controls.Add(this.btnDeleteShip);
@@ -182,5 +255,11 @@
         private System.Windows.Forms.Button btnDeleteShip;
         private System.Windows.Forms.Button btnUpdateShip;
         private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnShowCatches;
+        private System.Windows.Forms.Button btnUpdateCatch;
+        private System.Windows.Forms.Button btnDeleteCatch;
+        private System.Windows.Forms.Button btnLeaderboard;
+        private System.Windows.Forms.Button btnShipLeaderboard;
+        private System.Windows.Forms.Button btnEnvPolution;
     }
 }

@@ -73,10 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddCatchController.cs" />
     <Compile Include="Controller\AddShipController.cs" />
+    <Compile Include="Controller\DeleteCatchController.cs" />
     <Compile Include="Controller\DeleteShipController.cs" />
     <Compile Include="Controller\FishingAgencyController.cs" />
     <Compile Include="Controller\RegistrationController.cs" />
+    <Compile Include="Controller\UpdateCatchControler.cs" />
     <Compile Include="Controller\UpdateShipController.cs" />
     <Compile Include="Controller\UpdateUserController.cs" />
     <Compile Include="Controller\Utility.cs" />
@@ -104,11 +107,23 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>FishingAgencyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogViews\AddCatchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\AddCatchView.Designer.cs">
+      <DependentUpon>AddCatchView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogViews\ForgottenPasswordView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\DialogViews\ForgottenPasswordView.Designer.cs">
       <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateCatchView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogViews\UpdateCatchView.Designer.cs">
+      <DependentUpon>UpdateCatchView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DialogViews\UpdateUserView.cs">
       <SubType>Form</SubType>
@@ -179,8 +194,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\AddCatchView.resx">
+      <DependentUpon>AddCatchView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\DialogViews\ForgottenPasswordView.resx">
       <DependentUpon>ForgottenPasswordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogViews\UpdateCatchView.resx">
+      <DependentUpon>UpdateCatchView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogViews\UpdateUserView.resx">
       <DependentUpon>UpdateUserView.cs</DependentUpon>

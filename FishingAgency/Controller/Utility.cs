@@ -11,13 +11,22 @@ namespace FishingAgency.Controller
     public static class Utility
     {
         static private User logedUser;
-
         public static User LoggedUser
         {
             get => logedUser;
             set => logedUser = value;
         }
-
+        public static FishingShip LoggedShip
+        {
+            get
+            {
+                using (FishingAgencyEntities fadb = new FishingAgencyEntities())
+                {
+                    return fadb.Users.Where(u => u.Username == Utility.LoggedUser.Username)
+                        .ToList().FirstOrDefault().FishingShip;
+                }
+            }
+        }
         public static bool Validate(string textToValidate)
         {
             if (textToValidate.Length < 0 || String.IsNullOrWhiteSpace(textToValidate) || String.IsNullOrEmpty(textToValidate))
@@ -53,6 +62,11 @@ namespace FishingAgency.Controller
             to.StartPosition = FormStartPosition.Manual;
             to.Show();
             from.Hide();
+        }
+
+        public static void Error16()
+        {
+            MessageBox.Show("Something went wrong 😪");
         }
     }
 }
