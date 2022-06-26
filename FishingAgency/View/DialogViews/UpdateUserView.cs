@@ -16,7 +16,7 @@ namespace FishingAgency.View
     {
         UpdateUserController updateUserControllerController;
         public static UpdateUserView instance = null;
-        public UpdateUserView()
+        public UpdateUserView(MainView mainView)
         {
             if (instance == null)
             {
@@ -31,6 +31,7 @@ namespace FishingAgency.View
             this.FormClosed += new FormClosedEventHandler(FormClosed);
             void FormClosed(object sender, FormClosedEventArgs e)
             {
+                mainView.btnShowShips_Click(null, null);
                 instance = null;
             }
         }

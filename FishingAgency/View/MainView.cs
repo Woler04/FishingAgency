@@ -14,27 +14,10 @@ namespace FishingAgency.View
 {
     public partial class MainView : Form
     {
-        private Timer myTimer;
         private FishingAgencyController controller;
-        private DgvState dgvState;
-        private enum DgvState
-        {
-            Query1,
-            Query2,
-            Query3,
-            Query4,
-            Users,
-            Ships,
-            Catches
-        };
 
         public MainView()
         {
-            myTimer = new Timer();
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
-            myTimer.Interval = 1;
-            myTimer.Start();
-            dgvState = DgvState.Users;
             InitializeComponent();
 
             if (Utility.LoggedUser.Username != "Admin")
@@ -50,11 +33,9 @@ namespace FishingAgency.View
             this.dgvFishingAgency.MultiSelect = false;
         }
 
-        private void btnShowShips_Click(object sender, EventArgs e)
+        public void btnShowShips_Click(object sender, EventArgs e)
         {
             ResetColumns();
-            dgvState = DgvState.Ships;
-            myTimer.Start();
 
             dgvFishingAgency.DataSource = controller.GetFishingShips();
             dgvFishingAgency.CurrentCell = null;
@@ -78,11 +59,9 @@ namespace FishingAgency.View
         }
 
         ///trqq da si pecahtaneto
-        private void btnShowUsers_Click(object sender, EventArgs e)
+        public void btnShowUsers_Click(object sender, EventArgs e)
         {
             ResetColumns();
-            dgvState = DgvState.Users;
-            myTimer.Start();
 
             dgvFishingAgency.DataSource = controller.GetUsers();
             dgvFishingAgency.CurrentCell = null;
@@ -113,10 +92,9 @@ namespace FishingAgency.View
             }
         }
 
-        private void btnShowCatchses_Click(object sender, EventArgs e)
+        public void btnShowCatchses_Click(object sender, EventArgs e)
         {
             ResetColumns();
-            dgvState = DgvState.Catches;
 
             dgvFishingAgency.DataSource = controller.GetCatches();
 
@@ -150,8 +128,7 @@ namespace FishingAgency.View
         {
             if (AddShipView.instance == null)
             {
-                dgvState = DgvState.Ships;
-                AddShipView addShip = new AddShipView();
+                AddShipView addShip = new AddShipView(this);
                 addShip.Show();
             }
         }
@@ -160,8 +137,7 @@ namespace FishingAgency.View
         {
             if (DeleteShipView.instance == null)
             {
-                dgvState = DgvState.Ships;
-                DeleteShipView deleteShip = new DeleteShipView();
+                DeleteShipView deleteShip = new DeleteShipView(this);
                 deleteShip.Show();
             }
         }
@@ -170,8 +146,7 @@ namespace FishingAgency.View
         {
             if (UpdateShipView.instance == null)
             {
-                dgvState = DgvState.Ships;
-                UpdateShipView updateShip = new UpdateShipView();
+                UpdateShipView updateShip = new UpdateShipView(this);
                 updateShip.Show();
             }
         }
@@ -180,8 +155,7 @@ namespace FishingAgency.View
         {
             if (UpdateUserView.instance == null)
             {
-                dgvState = DgvState.Users;
-                UpdateUserView updateUser = new UpdateUserView();
+                UpdateUserView updateUser = new UpdateUserView(this);
                 updateUser.Show();
             }
         }
@@ -190,8 +164,7 @@ namespace FishingAgency.View
         {
             if (AddCatchView.instance == null)
             {
-                dgvState = DgvState.Ships;
-                AddCatchView addCatch = new AddCatchView();
+                AddCatchView addCatch = new AddCatchView(this);
                 addCatch.Show();
             }
         }
@@ -219,7 +192,7 @@ namespace FishingAgency.View
                     return;
                 }
 
-                UpdateCatchView updateCatch = new UpdateCatchView(ctch);
+                UpdateCatchView updateCatch = new UpdateCatchView(this, ctch);
                 updateCatch.Show();
             }
         }
@@ -253,57 +226,10 @@ namespace FishingAgency.View
             }
         }
 
-        private void TimerEventProcessor(Object myObject,
-                                            EventArgs myEventArgs)
-        {
-            switch (dgvState)
-            {
-                case DgvState.Query1:
-                    //TBA
-                    break;
-
-                case DgvState.Query2:
-                    btnLeaderboard_Click(null, null);
-                    dgvFishingAgency.CurrentCell = null;
-                    break;
-
-                case DgvState.Query3:
-                    btnShipLeaderboard_Click(null, null);
-                    dgvFishingAgency.CurrentCell = null;
-                    break;
-
-                case DgvState.Query4:
-                    btnEnvPolution_Click(null, null);
-                    dgvFishingAgency.CurrentCell = null;
-                    break;
-
-                case DgvState.Users:
-                    btnShowUsers_Click(null, null);
-                    dgvFishingAgency.CurrentCell = null;
-                    break;
-
-                case DgvState.Ships:
-                    btnShowShips_Click(null, null);
-                    dgvFishingAgency.CurrentCell = null;
-                    break;
-
-                case DgvState.Catches:
-                    btnShowCatchses_Click(null, null);
-                    myTimer.Stop();
-                    break;
-
-                default:
-                    Utility.Error16();
-                    break;
-            }
-        }
-
         //Queries
         private void btnLeaderboard_Click(object sender, EventArgs e)
         {
             ResetColumns();
-            dgvState = DgvState.Query2;
-            myTimer.Start();
 
             dgvFishingAgency.DataSource = controller.GetHobbyLeaderBoard().ToList();
             dgvFishingAgency.CurrentCell = null;
@@ -329,9 +255,6 @@ namespace FishingAgency.View
         private void btnShipLeaderboard_Click(object sender, EventArgs e)
         {
             ResetColumns();
-
-            dgvState = DgvState.Query3;
-            myTimer.Start();
 
             List<FishingShip> fishingShip = controller.GetFishingShipsWithCatches();
             dgvFishingAgency.DataSource = fishingShip;
@@ -375,9 +298,6 @@ namespace FishingAgency.View
         private void btnEnvPolution_Click(object sender, EventArgs e)
         {
             ResetColumns();
-
-            dgvState = DgvState.Query4;
-            myTimer.Start();
 
             List<FishingShip> fishingShip = controller.GetFishingShipsWithLicense();
             dgvFishingAgency.DataSource = fishingShip;

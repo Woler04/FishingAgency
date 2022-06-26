@@ -17,7 +17,7 @@ namespace FishingAgency.View
         AddCatchController addCatchController;
         public static AddCatchView instance = null;
 
-        public AddCatchView()
+        public AddCatchView(MainView mainView)
         {
             if (instance == null)
             {
@@ -30,6 +30,7 @@ namespace FishingAgency.View
             this.FormClosed += new FormClosedEventHandler(FormClosed);
             void FormClosed(object sender, FormClosedEventArgs e)
             {
+                mainView.btnShowCatchses_Click(null, null);
                 instance = null;
             }
         }

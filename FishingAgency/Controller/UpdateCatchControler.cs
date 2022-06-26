@@ -23,7 +23,7 @@ namespace FishingAgency.Controller
             return false;
         };*/
 
-        public void UpdateCatch(Catch newCatch, string shipName)
+        public void UpdateCatch(Catch newCatch, FishingShip fishingShip)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
@@ -34,7 +34,7 @@ namespace FishingAgency.Controller
                     catchToUpdate.Amount = newCatch.Amount;
                     catchToUpdate.Lenght = newCatch.Lenght;
                     catchToUpdate.StartDate = newCatch.StartDate;
-                    catchToUpdate.ShipId = fadb.FishingShips.ToList().Where(s => s.Name == shipName).FirstOrDefault().Id;
+                    catchToUpdate.ShipId = fishingShip.Id;
                     fadb.SaveChanges();
                 }
                 else

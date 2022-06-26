@@ -16,7 +16,8 @@ namespace FishingAgency.View
     {
         AddShipController addShipController;
         public static AddShipView instance = null;
-        public AddShipView()
+
+        public AddShipView() 
         {
             if (instance == null)
             {
@@ -28,6 +29,16 @@ namespace FishingAgency.View
             this.FormClosed += new FormClosedEventHandler(FormClosed);
             void FormClosed(object sender, FormClosedEventArgs e)
             {
+                instance = null;
+            }
+        }
+
+        public AddShipView(MainView mainView) : this()
+        {
+            this.FormClosed += new FormClosedEventHandler(FormClosedFromMain);
+            void FormClosedFromMain(object sender, FormClosedEventArgs e)
+            {
+                mainView.btnShowShips_Click(null, null);
                 instance = null;
             }
         }
