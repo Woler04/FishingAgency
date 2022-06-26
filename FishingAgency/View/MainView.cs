@@ -319,7 +319,7 @@ namespace FishingAgency.View
 
                 for (int i = 0; i <= dgvFishingAgency.RowCount - 1; i++)
                 {
-                    dgvFishingAgency.Rows[i].Cells["CarbonPolution"].Value = controller.EnvPolution(fishingShip[i]);
+                    dgvFishingAgency.Rows[i].Cells["CarbonPolution"].Value = Math.Round(controller.EnvPolution(fishingShip[i]), 2);
                 }
             }
             catch (Exception) { }
