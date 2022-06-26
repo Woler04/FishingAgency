@@ -236,8 +236,8 @@ namespace FishingAgency.View
 
             try
             {
-                dgvFishingAgency.Columns[0].Name = "Name";
-                dgvFishingAgency.Columns[1].Name = "Amount Catched";
+                dgvFishingAgency.Columns[0].Width = 175;
+                dgvFishingAgency.Columns[1].Width = 175;
                 for (int i = 0; i < dgvFishingAgency.RowCount; i++)
                 {
                     if (dgvFishingAgency.Rows[i].Cells["Name"].Value as string == Utility.LoggedUser.Name)
