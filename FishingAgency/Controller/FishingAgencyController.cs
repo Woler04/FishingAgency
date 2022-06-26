@@ -26,8 +26,7 @@ namespace FishingAgency.Controller
             {
                 List<FishingShip> ships = fadb.FishingShips.ToList();
                 ships.Remove(fadb.FishingShips.Where(s => s.Name == "admin").FirstOrDefault());
-                ships.Where(s => s.Catches.Count > 0).ToList();
-                return ships;
+                return ships.Where(s => s.Catches.Count > 0).ToList();
             }
         }
 
@@ -37,8 +36,7 @@ namespace FishingAgency.Controller
             {
                 List<FishingShip> ships = fadb.FishingShips.ToList();
                 ships.Remove(fadb.FishingShips.Where(s => s.Name == "admin").FirstOrDefault());
-                ships.Where(s => s.LicenseExpiration >= DateTime.Today && s.Catches.Count > 0).ToList();
-                return ships;
+                return ships.Where(s => s.LicenseExpiration >= DateTime.Today && s.Catches.Count > 0).ToList();
             }
         }
 
@@ -69,6 +67,7 @@ namespace FishingAgency.Controller
                 return users.ElementAt(id-1).FishingShip.Name;
             }
         }
+
         public string GetShipNameByCatch(Catch catc)
         {
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
@@ -97,15 +96,7 @@ namespace FishingAgency.Controller
                 {
                     double amountSum = 0;
                     user.FishingShip.Catches.ToList().ForEach(c => amountSum += c.Amount);
-                    //if (shipsAndCatch.ContainsKey(user.Name))
-                    //{
-                    //    shipsAndCatch[user.Name] += amountSum;
-                    //}
-                    //else 
-                    //{
                     shipsAndCatch.Add(user.Name, amountSum);
-                    //}
-
                 }
             }
 
@@ -201,18 +192,16 @@ namespace FishingAgency.Controller
             double yearAmount = 0;
             double yearLenght = 0;
 
-
             //CARBON OTPECHATYK = (FUEL * ALL IZLETI.CHASOVE) / ALL IZLETI.RIBOLOV
 
             using (FishingAgencyEntities fadb = new FishingAgencyEntities())
             {
                 FishingShip ship = fadb.FishingShips.ToList().Where(s => s.Id == currship.Id).FirstOrDefault();
-                ship.Catches.Where(c => c.StartDate >= DateTime.Today.AddYears(-1)).ToList().ForEach(c =>
+                ship.Catches.Where(c => c.StartDate.Year == DateTime.Today.Year).ToList().ForEach(c =>
                 {
                     yearAmount += c.Amount;
                     yearLenght += c.Lenght;
                 });
-
             }
 
             envPolution = (currship.FuelUsage * yearAmount) / yearLenght;

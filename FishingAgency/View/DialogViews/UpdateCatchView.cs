@@ -18,7 +18,7 @@ namespace FishingAgency.View
         public static UpdateCatchView instance = null;
         private Catch ca4Up;
 
-        public UpdateCatchView(Catch catchTUPD)
+        public UpdateCatchView(MainView mainView, Catch catchTUPD)
         {
             if (instance == null)
             {
@@ -32,6 +32,7 @@ namespace FishingAgency.View
             this.FormClosed += new FormClosedEventHandler(FormClosed);
             void FormClosed(object sender, FormClosedEventArgs e)
             {
+                mainView.btnShowCatchses_Click(null, null);
                 instance = null;
             }
         }
@@ -63,9 +64,9 @@ namespace FishingAgency.View
                 }
                 catchToUpdate.Id = ca4Up.Id;
                 catchToUpdate.FishingShip = shipToCheck;
+                updateCatchController.UpdateCatch(catchToUpdate, shipToCheck);
             }
 
-            updateCatchController.UpdateCatch(catchToUpdate, txtName.Text);
             instance = null;
             this.Close();
         }
